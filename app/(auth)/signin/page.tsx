@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export default function SignIn() {
   return (
-    <section>
+    <section className="bg-[#273e3d]"> {/* Updated background to match index page */}
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="py-12 md:py-20">
           {/* Section header */}
@@ -21,7 +21,7 @@ export default function SignIn() {
             <div className="space-y-5">
               <div>
                 <label
-                  className="mb-1 block text-sm font-medium text-indigo-200/65"
+                  className="mb-1 block text-sm font-medium text-stone-200"
                   htmlFor="email"
                 >
                   Email
@@ -29,20 +29,20 @@ export default function SignIn() {
                 <input
                   id="email"
                   type="email"
-                  className="form-input w-full"
+                  className="form-input w-full bg-stone-100 text-[#273e3d] placeholder-[#273e3d]"
                   placeholder="Your email"
                 />
               </div>
               <div>
                 <div className="mb-1 flex items-center justify-between gap-3">
                   <label
-                    className="block text-sm font-medium text-indigo-200/65"
+                    className="block text-sm font-medium text-stone-200"
                     htmlFor="password"
                   >
                     Password
                   </label>
                   <Link
-                    className="text-sm text-gray-600 hover:underline"
+                    className="text-sm text-stone-300 hover:underline"
                     href="/reset-password"
                   >
                     Forgot?
@@ -51,27 +51,27 @@ export default function SignIn() {
                 <input
                   id="password"
                   type="password"
-                  className="form-input w-full"
+                  className="form-input w-full bg-stone-100 text-[#273e3d] placeholder-[#273e3d]"
                   placeholder="Your password"
                 />
               </div>
             </div>
             <div className="mt-6 space-y-5">
-              <button className="btn w-full bg-linear-to-t from-indigo-600 to-indigo-500 bg-[length:100%_100%] bg-[bottom] text-white shadow-[inset_0px_1px_0px_0px_--theme(--color-white/.16)] hover:bg-[length:100%_150%]">
+              <button className="btn w-full bg-linear-to-t from-green-800 to-green-700 bg-[length:100%_100%] bg-[bottom] text-white shadow-[inset_0px_1px_0px_0px_--theme(--color-white/.16)] hover:bg-[length:100%_150%]">
                 Sign in
               </button>
-              <div className="flex items-center gap-3 text-center text-sm italic text-gray-600 before:h-px before:flex-1 before:bg-linear-to-r before:from-transparent before:via-gray-400/25 after:h-px after:flex-1 after:bg-linear-to-r after:from-transparent after:via-gray-400/25">
+              <div className="flex items-center gap-3 text-center text-sm italic text-stone-300 before:h-px before:flex-1 before:bg-linear-to-r before:from-transparent before:via-stone-400/25 after:h-px after:flex-1 after:bg-linear-to-r after:from-transparent after:via-stone-400/25">
                 or
               </div>
-              <button className="btn relative w-full bg-linear-to-b from-gray-800 to-gray-800/60 bg-[length:100%_100%] bg-[bottom] text-gray-300 before:pointer-events-none before:absolute before:inset-0 before:rounded-[inherit] before:border before:border-transparent before:[background:linear-gradient(to_right,var(--color-gray-800),var(--color-gray-700),var(--color-gray-800))_border-box] before:[mask-composite:exclude_!important] before:[mask:linear-gradient(white_0_0)_padding-box,_linear-gradient(white_0_0)] hover:bg-[length:100%_150%]">
+              <button className="btn relative w-full bg-linear-to-b from-stone-800 to-stone-800/60 bg-[length:100%_100%] bg-[bottom] text-stone-300 before:pointer-events-none before:absolute before:inset-0 before:rounded-[inherit] before:border before:border-transparent before:[background:linear-gradient(to_right,var(--color-stone-800),var(--color-stone-700),var(--color-stone-800))_border-box] before:[mask-composite:exclude_!important] before:[mask:linear-gradient(white_0_0)_padding-box,_linear-gradient(white_0_0)] hover:bg-[length:100%_150%]">
                 Sign In with Google
               </button>
             </div>
           </form>
           {/* Bottom link */}
-          <div className="mt-6 text-center text-sm text-indigo-200/65">
+          <div className="mt-6 text-center text-sm text-stone-300">
             Don't you have an account?{" "}
-            <Link className="font-medium text-indigo-500" href="/signup">
+            <Link className="font-medium text-green-500 hover:text-green-400" href="/signup">
               Sign Up
             </Link>
           </div>

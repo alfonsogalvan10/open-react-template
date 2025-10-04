@@ -16,7 +16,7 @@ export default function HeroButtons() {
       setShowModal(false);
       setPassword(""); // Clear the password field
       setError(""); // Clear any error messages
-      router.push("/reset-password"); // Redirect to the desired page
+      router.push("/signin"); // Redirect to the desired page
     } else {
       setError("Incorrect password. Please try again.");
       setPassword(""); // Clear the password field after an incorrect attempt
