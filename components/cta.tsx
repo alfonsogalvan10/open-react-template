@@ -16,12 +16,12 @@ export default function Cta() {
             <div className="mx-auto max-w-xs sm:flex sm:max-w-none sm:justify-center">
               <div data-aos="fade-up" data-aos-delay={400}>
                 <a
-                  className="btn group mb-4 w-full bg-stone-100 text-green-800 hover:bg-green-50 sm:mb-0 sm:w-auto"
+                  className="btn group mb-4 w-full bg-stone-100 text-[#273e3d] hover:bg-green-50 sm:mb-0 sm:w-auto"
                   href="#0"
                 >
                   <span className="relative inline-flex items-center">
-                    Start Building
-                    <span className="ml-1 tracking-normal text-green-800 transition-transform group-hover:translate-x-0.5">
+                    Explore Jobs
+                    <span className="ml-1 tracking-normal text-[#273e3d] transition-transform group-hover:translate-x-0.5">
                       -&gt;
                     </span>
                   </span>
@@ -29,10 +29,10 @@ export default function Cta() {
               </div>
               <div data-aos="fade-up" data-aos-delay={600}>
                 <a
-                  className="btn relative w-full bg-green-800 text-white hover:bg-green-700 sm:ml-4 sm:w-auto"
+                  className="btn relative w-full bg-stone-100 text-[#273e3d] hover:bg-green-50 sm:ml-4 sm:w-auto"
                   href="#0"
                 >
-                  Schedule Demo
+                  Pricing
                 </a>
               </div>
             </div>

@@ -5,31 +5,33 @@ import Logo from "./logo";
 
 export default function Header() {
   return (
-    <header className="z-30 mt-2 w-full md:mt-5">
+    <header className="z-30 w-full bg-stone-200 pt-12 pb-4 md:pt-6 md:pb-6 sticky top-0">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="relative flex h-14 items-center justify-between gap-3 rounded-2xl bg-stone-100 px-3">
+        <div className="relative flex h-14 items-center justify-between gap-3 rounded-2xl bg-stone-200 px-3">
           {/* Site branding */}
-          {/* <div className="flex flex-1 items-center">
+          <div className="flex flex-1 items-center">
             <Logo />
-          </div> */}
+          </div>
 
           {/* Desktop sign in links */}
           <ul className="flex flex-1 items-center justify-end gap-3">
             <li>
                 <Link
                 href="/signin"
-                className="btn-sm relative bg-white py-[5px] text-green-800 hover:bg-green-50"
+                className="btn group w-full bg-stone-100 text-[#273e3d] hover:bg-green-50 sm:w-auto px-4 py-2 text-base font-medium"
                 >
-                Sign In
+                <span className="relative inline-flex items-center">
+                  Sign In
+                </span>
                 </Link>
             </li>
             <li>
-              <Link
+                <Link
                 href="/signup"
-                className="btn-sm bg-linear-to-t from-green-800 to-green-700 bg-[length:100%_100%] bg-[bottom] py-[5px] text-white shadow-[inset_0px_1px_0px_0px_--theme(--color-white/.16)] hover:bg-[length:100%_150%]"
-              >
+                className="btn group w-full bg-[#273e3d] text-white hover:bg-[#355c58] sm:w-auto px-4 py-2 text-base font-medium"
+                >
                 Register
-              </Link>
+                </Link>
             </li>
           </ul>
         </div>
