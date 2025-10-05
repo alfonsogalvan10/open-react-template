@@ -4,7 +4,7 @@ export const metadata = {
 };
 
 import Link from "next/link"
-import { login, signup } from './actions'
+import { login } from './actions'
 
 export default function SignIn() {
   return (
