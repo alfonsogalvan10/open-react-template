@@ -3,7 +3,8 @@ export const metadata = {
   description: "Page description",
 };
 
-import Link from "next/link";
+import Link from "next/link"
+import { login, signup } from './actions'
 
 export default function SignIn() {
   return (
@@ -12,7 +13,7 @@ export default function SignIn() {
         <div className="py-12 md:py-20">
           {/* Section header */}
           <div className="pb-12 text-center">
-            <h1 className="animate-[gradient_6s_linear_infinite] bg-[linear-gradient(to_right,var(--color-gray-200),var(--color-indigo-200),var(--color-gray-50),var(--color-indigo-300),var(--color-gray-200))] bg-[length:200%_auto] bg-clip-text font-nacelle text-3xl font-semibold text-transparent md:text-4xl">
+            <h1 className="text-white bg-[length:200%_auto] bg-clip-text font-nacelle text-3xl font-semibold text-transparent md:text-4xl">
               Welcome back
             </h1>
           </div>
@@ -28,9 +29,11 @@ export default function SignIn() {
                 </label>
                 <input
                   id="email"
+                  name="email" // Add this
                   type="email"
                   className="form-input w-full bg-stone-100 text-[#273e3d] placeholder-[#273e3d]"
                   placeholder="Your email"
+                  required
                 />
               </div>
               <div>
@@ -50,14 +53,16 @@ export default function SignIn() {
                 </div>
                 <input
                   id="password"
+                  name="password" // Add this
                   type="password"
                   className="form-input w-full bg-stone-100 text-[#273e3d] placeholder-[#273e3d]"
                   placeholder="Your password"
+                  required
                 />
               </div>
             </div>
-            <div className="mt-6 space-y-5">
-              <button className="btn w-full bg-linear-to-t from-green-800 to-green-700 bg-[length:100%_100%] bg-[bottom] text-white shadow-[inset_0px_1px_0px_0px_--theme(--color-white/.16)] hover:bg-[length:100%_150%]">
+            <div className="mt-6 space-y-5"> 
+              <button formAction={login} className="btn w-full bg-linear-to-t from-green-800 to-green-700 bg-[length:100%_100%] bg-[bottom] text-white shadow-[inset_0px_1px_0px_0px_--theme(--color-white/.16)] hover:bg-[length:100%_150%]">
                 Sign in
               </button>
               <div className="flex items-center gap-3 text-center text-sm italic text-stone-300 before:h-px before:flex-1 before:bg-linear-to-r before:from-transparent before:via-stone-400/25 after:h-px after:flex-1 after:bg-linear-to-r after:from-transparent after:via-stone-400/25">

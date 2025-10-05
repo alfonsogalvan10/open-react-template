@@ -16,14 +16,14 @@ export default function Header() {
           {/* Desktop sign in links */}
           <ul className="flex flex-1 items-center justify-end gap-3">
             <li>
-                <Link
-                href="/signin"
-                className="btn group w-full bg-stone-100 text-[#273e3d] hover:bg-green-50 sm:w-auto px-4 py-2 text-base font-medium"
-                >
-                <span className="relative inline-flex items-center">
-                  Sign In
-                </span>
-                </Link>
+              <Link
+              href="/private"
+              className="btn group w-full bg-stone-100 text-[#273e3d] hover:bg-green-50 sm:w-auto px-4 py-2 text-base font-medium"
+              >
+              <span className="relative inline-flex items-center">
+                Sign In
+              </span>
+              </Link>
             </li>
             <li>
                 <Link
