@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Logo from "./logo";
+import SignOutButton from "../signout-button";
 
 export default function Header() {
   return (
@@ -32,6 +33,9 @@ export default function Header() {
                 >
                 Register
                 </Link>
+            </li>
+            <li>
+                <SignOutButton />
             </li>
           </ul>
         </div>
