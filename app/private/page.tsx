@@ -12,46 +12,72 @@ export default async function PrivatePage() {
 
   // Fetch the user's profile (full_name) from the profiles table
   const { data: profile, error: profileError } = await supabase
-    .from("profiles")
-    .select("full_name")
-    .eq("id", user.user.id) // Match the user's id with the profiles table
+    .from('profiles')
+    .select('full_name')
+    .eq('id', user.user.id) // Match the user's id with the profiles table
     .single(); // Fetch a single row
 
   if (profileError) {
-    console.error("Error fetching profile:", profileError.message);
+    console.error('Error fetching profile:', profileError.message);
   }
 
-  // Fetch instruments
-  const { data: instruments, error: instrumentsError } = await supabase
-    .from("instruments")
-    .select();
+  // Fetch jobs
+  const { data: jobs, error: jobsError } = await supabase.from('jobs').select();
 
-  if (instrumentsError) {
-    console.error("Error fetching instruments:", instrumentsError.message);
+  if (jobsError) {
+    console.error('Error fetching jobs:', jobsError.message);
   }
+
+  // Extract domain from URL
+  const jobsWithDomains = jobs?.map((job) => {
+    try {
+      const url = new URL(job.url);
+      const domain = url.hostname.replace('www.', ''); // Extract domain (e.g., "apple.com")
+      return { ...job, domain };
+    } catch (error) {
+      console.error('Invalid URL:', job.url);
+      return { ...job, domain: null }; // Handle invalid URLs gracefully
+    }
+  });
 
   return (
-    <section className="bg-[#273e3d]">
+    <section className="bg-white">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="py-12 md:py-20">
-          <div className="pb-12 text-center">
-            <h1 className="text-white bg-[length:200%_auto] bg-clip-text font-nacelle text-3xl font-semibold text-transparent md:text-4xl">
-              Welcome back {profile?.full_name || user.user.email}!
-            </h1>
-            <div className="mt-8 space-y-4">
-              {instruments && instruments.length > 0 ? (
-                instruments.map((instrument: any, index: number) => (
-                  <p
-                    key={index}
-                    className="text-stone-200 text-lg leading-relaxed"
+          <h1 className="text-gray-900 text-3xl font-semibold mb-8">
+            Welcome back, {profile?.full_name || user.user.email}!
+          </h1>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {jobsWithDomains?.map((job) => (
+              <article
+                key={job.id}
+                className="group border border-gray-200 rounded-lg shadow-md"
+              >
+                <img
+                  alt={`${job.company} logo`}
+                  src={
+                    job.domain
+                      ? `https://cdn.brandfetch.io/${job.domain}`
+                      : 'https://via.placeholder.com/150'
+                  }
+                  className="h-32 w-full rounded-t-xl bg-gray-100"
+                />
+                <div className="p-2">
+                  <h3 className="text-gray-900 font-semibold text-gray-900">
+                    {job.title}
+                  </h3>
+                  <p className="text-xs text-gray-500">{job.company}</p>
+                  <a
+                    href={job.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn w-full bg-stone-100 text-[#273e3d] hover:bg-green-50 mt-2"
                   >
-                    <strong>{instrument.name}</strong>: {instrument.description || "No description available."}
-                  </p>
-                ))
-              ) : (
-                <p className="text-stone-400">No instruments found.</p>
-              )}
-            </div>
+                    View Job
+                  </a>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </div>
