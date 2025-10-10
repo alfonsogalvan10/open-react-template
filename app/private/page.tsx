@@ -22,7 +22,10 @@ export default async function PrivatePage() {
   }
 
   // Fetch jobs
-  const { data: jobs, error: jobsError } = await supabase.from('jobs').select();
+  const { data: jobs, error: jobsError } = await supabase
+    .from('jobs')
+    .select()
+    .eq('approved', true);
 
   if (jobsError) {
     console.error('Error fetching jobs:', jobsError.message);
@@ -47,37 +50,43 @@ export default async function PrivatePage() {
           <h1 className="text-gray-900 text-3xl font-semibold mb-8">
             Welcome back, {profile?.full_name || user.user.email}!
           </h1>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {jobsWithDomains?.map((job) => (
-              <article
-                key={job.id}
-                className="group border border-gray-200 rounded-lg shadow-md"
-              >
-                <img
-                  alt={`${job.company} logo`}
-                  src={
-                    job.domain
-                      ? `https://cdn.brandfetch.io/${job.domain}`
-                      : 'https://via.placeholder.com/150'
-                  }
-                  className="h-32 w-full rounded-t-xl bg-gray-100"
-                />
-                <div className="p-2">
-                  <h3 className="text-gray-900 font-semibold text-gray-900">
-                    {job.title}
-                  </h3>
-                  <p className="text-xs text-gray-500">{job.company}</p>
-                  <a
-                    href={job.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn w-full bg-stone-100 text-[#273e3d] hover:bg-green-50 mt-2"
-                  >
-                    View Job
-                  </a>
-                </div>
-              </article>
-            ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {jobsWithDomains && jobsWithDomains.length > 0 ? (
+              jobsWithDomains.map((job) => (
+                <article
+                  key={job.id}
+                  className="group border border-gray-200 rounded-lg shadow-md"
+                >
+                  <img
+                    alt={`${job.company} logo`}
+                    src={
+                      job.domain
+                        ? `https://cdn.brandfetch.io/${job.domain}`
+                        : 'https://via.placeholder.com/150'
+                    }
+                    className="h-32 w-full rounded-t-xl bg-gray-100"
+                  />
+                  <div className="p-2">
+                    <h3 className="text-gray-900 font-semibold text-gray-900">
+                      {job.title}
+                    </h3>
+                    <p className="text-xs text-gray-500">{job.company}</p>
+                    <a
+                      href={job.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn w-full bg-stone-100 text-[#273e3d] hover:bg-green-50 mt-2"
+                    >
+                      View Job
+                    </a>
+                  </div>
+                </article>
+              ))
+            ) : (
+              <p className="text-center text-gray-500 col-span-full">
+                No jobs available at the moment. Please check back later.
+              </p>
+            )}
           </div>
         </div>
       </div>
