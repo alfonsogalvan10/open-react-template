@@ -23,11 +23,7 @@ export async function createClient() {
             // user sessions.
           }
         },
-      },
-      auth: {
-        persistSession: false, // Disable session persistence
-        autoRefreshToken: false, // Disable automatic token refresh
-      },
+      }
     }
   )
 }

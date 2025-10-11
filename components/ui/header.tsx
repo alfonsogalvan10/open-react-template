@@ -4,9 +4,26 @@ import Link from "next/link";
 import { usePathname } from "next/navigation"; // Import usePathname
 import Logo from "./logo";
 import SignOutButton from "../signout-button";
+import { createClient } from "../../utils/supabase/client";
+import { useEffect, useState } from "react";
 
 export default function Header() {
   const pathname = usePathname(); // Get the current route
+  const [isSignedIn, setIsSignedIn] = useState(false);
+
+  useEffect(() => {
+    const checkAuth = async () => {
+      const supabase = createClient();
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+      setIsSignedIn(!!session);
+    };
+
+    checkAuth();
+  }, []);
+
+  console.log("Currently signed in:", isSignedIn); // Log the current signed in status
 
   return (
     <header className="z-30 w-full bg-stone-200 pt-12 pb-4 md:pt-6 md:pb-6 sticky top-0">
@@ -19,13 +36,11 @@ export default function Header() {
 
           {/* Desktop sign in links */}
           <ul className="flex flex-1 items-center justify-end gap-3">
-            {pathname === "/private" ? (
-              // Show only the Sign Out button on the /private route
+            {isSignedIn ? (
               <li>
                 <SignOutButton />
               </li>
             ) : (
-              // Show Sign In and Register buttons on other routes
               <>
                 <li>
                   <Link
