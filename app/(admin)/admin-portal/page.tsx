@@ -1,5 +1,6 @@
 import { redirect } from 'next/navigation';
 import { createClient } from '@/utils/supabase/server';
+import ApproveButton from '@/components/approve-button';
 
 export default async function PrivatePage() {
   const supabase = await createClient();
@@ -70,14 +71,7 @@ export default async function PrivatePage() {
                     {job.title}
                   </h3>
                   <p className="text-xs text-gray-500">{job.company}</p>
-                  <a
-                    href={job.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn w-full bg-stone-100 text-[#273e3d] hover:bg-green-50 mt-2"
-                  >
-                    Approve Job
-                  </a>
+                  <ApproveButton jobId={job.id} />
                 </div>
               </article>
             ))}

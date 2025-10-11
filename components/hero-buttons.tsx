@@ -5,8 +5,12 @@ import { useRouter } from "next/navigation";
 export default function HeroButtons() {
   const router = useRouter();
 
-  const handleExploreJobsClick = () => {
-    router.push("/private"); // Redirect to the /private route
+  const handleSubmitJobsClick = () => {
+    router.push("/submit-job"); // Redirect to the /submit-job route
+  };
+
+  const handleApproveJobsClick = () => {
+    router.push("/admin-portal"); // Redirect to the /admin-portal route
   };
 
   return (
@@ -14,10 +18,10 @@ export default function HeroButtons() {
       <div data-aos="fade-up" data-aos-delay={400}>
         <button
           className="btn relative w-full bg-stone-100 text-[#273e3d] hover:bg-green-50 sm:ml-4 sm:w-auto cursor-pointer"
-          onClick={handleExploreJobsClick} // Redirect on click
+          onClick={handleSubmitJobsClick} // Redirect on click
         >
           <span className="relative inline-flex items-center">
-            Explore Jobs
+            Submit Jobs
             <span className="ml-1 tracking-normal text-[#273e3d] hover:bg-green-50 transition-transform group-hover:translate-x-0.5">
               -&gt;
             </span>
@@ -26,10 +30,10 @@ export default function HeroButtons() {
       </div>
       <div data-aos="fade-up" data-aos-delay={600}>
         <a
-          className="btn relative w-full bg-stone-100 text-[#273e3d] hover:bg-green-50 sm:ml-4 sm:w-auto"
-          href="#0"
+          className="btn relative w-full bg-stone-100 text-[#273e3d] hover:bg-green-50 sm:ml-4 sm:w-auto cursor-pointer"
+          onClick={handleApproveJobsClick}
         >
-          Pricing
+          Approve Jobs
         </a>
       </div>
     </div>

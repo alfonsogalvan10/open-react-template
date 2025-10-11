@@ -1,0 +1,26 @@
+import { NextResponse } from "next/server";
+import { createClient } from "@/utils/supabase/server";
+
+export async function POST(req: Request, context: { params: { jobId: string } }) {
+  const { params } = context; // Await the context to access params
+  const supabase = await createClient();
+
+  try {
+    const { jobId } = params;
+
+    // Update the job's approval status in the database
+    const { error } = await supabase
+      .from("jobs")
+      .update({ approved: true })
+      .eq("id", jobId);
+
+    if (error) {
+      return NextResponse.json({ message: "Failed to approve the job." }, { status: 400 });
+    }
+
+    return NextResponse.json({ message: "Job approved successfully." });
+  } catch (error) {
+    console.error("Error approving job:", error);
+    return NextResponse.json({ message: "An unexpected error occurred." }, { status: 500 });
+  }
+}

@@ -50,7 +50,7 @@ export default async function PrivatePage() {
           <h1 className="text-gray-900 text-3xl font-semibold mb-8">
             Welcome back, {profile?.full_name || user.user.email}!
           </h1>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {jobsWithDomains && jobsWithDomains.length > 0 ? (
               jobsWithDomains.map((job) => (
                 <article
