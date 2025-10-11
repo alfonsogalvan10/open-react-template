@@ -1,13 +1,14 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/utils/supabase/server";
 
-export async function POST(req: Request, context: { params: { jobId: string } }) {
-  const { params } = context; // Await the context to access params
+export async function POST(
+  req: Request,
+  { params }: { params: Promise<{ jobId: string }> }
+) {
+  const { jobId } = await params; // Await the params to access jobId
   const supabase = await createClient();
 
   try {
-    const { jobId } = params;
-
     // Update the job's approval status in the database
     const { error } = await supabase
       .from("jobs")

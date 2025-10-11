@@ -24,6 +24,10 @@ export async function createClient() {
           }
         },
       },
+      auth: {
+        persistSession: false, // Disable session persistence
+        autoRefreshToken: false, // Disable automatic token refresh
+      },
     }
   )
 }
