@@ -12,12 +12,10 @@ export default function Workflows() {
           {/* Section header */}
           <div className="mx-auto max-w-3xl pb-16 text-center md:pb-24">
             <h2 className="pb-4 font-nacelle text-3xl font-semibold text-stone-700 md:text-4xl">
-              Map your product journey
+              Built by the community, powered by you.
             </h2>
             <p className="text-lg text-stone-600">
-              Simple and elegant interface to start collaborating with your team
-              in minutes. It seamlessly integrates with your code and your
-              favorite programming languages.
+              Join Europe's community-driven platform in three simple steps. Connect with opportunities shared by professionals, contribute your expertise, and grow alongside builders shaping the future of data and AI.
             </p>
           </div>
 
@@ -42,24 +40,14 @@ export default function Workflows() {
                 after:absolute after:inset-0 after:bg-linear-to-br 
                 after:from-stone-200/50 after:via-stone-100/25 after:to-stone-200/50"
               >
-                {/* Arrow */}
+                {/* Number 1 */}
                 <div
                   className="absolute right-6 top-6 flex h-8 w-8 items-center justify-center 
                     rounded-full border border-stone-300/50 bg-stone-200/65 
-                    text-[#273e3d] opacity-0 transition-opacity group-hover/card:opacity-100"
+                    text-[#273e3d] opacity-100"
                   aria-hidden="true"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width={9}
-                    height={8}
-                    fill="none"
-                  >
-                    <path
-                      fill="currentColor"
-                      d="m4.92 8-.787-.763 2.733-2.68H0V3.443h6.866L4.133.767 4.92 0 9 4 4.92 8Z"
-                    />
-                  </svg>
+                  <span className="text-lg font-bold">1</span>
                 </div>
                 {/* Image */}
                 <Image
@@ -82,13 +70,12 @@ export default function Workflows() {
                       hover:bg-stone-200/60"
                     >
                       <span className="bg-linear-to-r from-[#273e3d] to-[#355c58] bg-clip-text text-transparent">
-                        Built-in Tools
+                        Build.
                       </span>
                     </span>
                   </div>
                   <p className="text-stone-700">
-                    Streamline the product development flow with a content
-                    platform that's aligned across specs and insights.
+                    Establish your presence and contribute to the community by sharing your insights and opportunities with fellow data builders.
                   </p>
                 </div>
               </div>
@@ -113,24 +100,14 @@ export default function Workflows() {
                 after:absolute after:inset-0 after:bg-linear-to-br 
                 after:from-stone-200/50 after:via-stone-100/25 after:to-stone-200/50"
               >
-                {/* Arrow */}
+                {/* Number 2 */}
                 <div
                   className="absolute right-6 top-6 flex h-8 w-8 items-center justify-center 
                     rounded-full border border-stone-300/50 bg-stone-200/65 
-                    text-green-800 opacity-0 transition-opacity group-hover/card:opacity-100"
+                    text-green-800 opacity-100"
                   aria-hidden="true"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width={9}
-                    height={8}
-                    fill="none"
-                  >
-                    <path
-                      fill="currentColor"
-                      d="m4.92 8-.787-.763 2.733-2.68H0V3.443h6.866L4.133.767 4.92 0 9 4 4.92 8Z"
-                    />
-                  </svg>
+                  <span className="text-lg font-bold">2</span>
                 </div>
                 {/* Image */}
                 <Image
@@ -153,13 +130,12 @@ export default function Workflows() {
                       hover:bg-stone-200/60"
                     >
                       <span className="bg-linear-to-r from-[#273e3d] to-[#355c58] bg-clip-text text-transparent">
-                        Scale Instantly
+                        Connect.
                       </span>
                     </span>
                   </div>
                   <p className="text-stone-700">
-                    Streamline the product development flow with a content
-                    platform that's aligned across specs and insights.
+                    Find your next role through a network powered by professionals who understand your craft.
                   </p>
                 </div>
               </div>
@@ -184,24 +160,14 @@ export default function Workflows() {
                 after:absolute after:inset-0 after:bg-linear-to-br 
                 after:from-stone-200/50 after:via-stone-100/25 after:to-stone-200/50"
               >
-                {/* Arrow */}
+                {/* Number 3 */}
                 <div
                   className="absolute right-6 top-6 flex h-8 w-8 items-center justify-center 
                     rounded-full border border-stone-300/50 bg-stone-200/65 
-                    text-green-800 opacity-0 transition-opacity group-hover/card:opacity-100"
+                    text-green-800 opacity-100"
                   aria-hidden="true"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width={9}
-                    height={8}
-                    fill="none"
-                  >
-                    <path
-                      fill="currentColor"
-                      d="m4.92 8-.787-.763 2.733-2.68H0V3.443h6.866L4.133.767 4.92 0 9 4 4.92 8Z"
-                    />
-                  </svg>
+                  <span className="text-lg font-bold">3</span>
                 </div>
                 {/* Image */}
                 <Image
@@ -224,13 +190,12 @@ export default function Workflows() {
                       hover:bg-stone-200/60"
                     >
                       <span className="bg-linear-to-r from-[#273e3d] to-[#355c58] bg-clip-text text-transparent">
-                        Tailored Flows
+                        Grow.
                       </span>
                     </span>
                   </div>
                   <p className="text-stone-700">
-                    Streamline the product development flow with a content
-                    platform that's aligned across specs and insights.
+                    Advance your career alongside a community of builders forging the future of data.
                   </p>
                 </div>
               </div>

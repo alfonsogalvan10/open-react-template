@@ -11,7 +11,7 @@ export default function Cta() {
               className="pb-8 font-nacelle text-3xl font-semibold text-white-700 md:text-4xl"
               data-aos="fade-up"
             >
-              Join the content-first platform
+              Join Europe's data community.
             </h2>
             <div className="mx-auto max-w-xs sm:flex sm:max-w-none sm:justify-center">
               <div data-aos="fade-up" data-aos-delay={400}>

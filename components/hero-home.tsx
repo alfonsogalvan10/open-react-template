@@ -14,7 +14,7 @@ export default function HeroHome() {
               className="pb-5 font-nacelle text-4xl font-semibold text-white-700"
               data-aos="fade-up"
             >
-              European Data and AI Jobs
+              Find your next data role. Shape Europe's future.
             </h1>
             <div className="mx-auto max-w-3xl">
               <p
@@ -22,7 +22,7 @@ export default function HeroHome() {
                 data-aos="fade-up"
                 data-aos-delay={200}
               >
-                Connecting data talent with Europe's next big things.
+                Discover data and AI opportunities curated by the community. Connect with like-minded builders, share insights, and grow your career across Europe.
               </p>
               {/* Use the new HeroButtons component */}
               <HeroButtons />
