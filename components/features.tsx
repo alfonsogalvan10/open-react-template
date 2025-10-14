@@ -5,16 +5,16 @@ import FeaturesImage from "@/public/images/features.png";
 
 export default function Features() {
   return (
-    <section className="relative">
+    <section className="relative bg-stone-200">
 
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="border-t py-12 [border-image:linear-gradient(to_right,transparent,--theme(--color-stone-400/.25),transparent)1] md:py-20">
           {/* Section header */}
           <div className="mx-auto max-w-3xl pb-4 text-center md:pb-12">
-            <h2 className="pb-4 font-nacelle text-3xl font-semibold text-stone-700 md:text-4xl">
+            <h2 className="pb-4 font-nacelle text-4xl font-semibold text-[#273e3d] md:text-4xl">
               Built for modern product teams
             </h2>
-            <p className="text-lg text-stone-600">
+            <p className="mb-8 text-xl text-[#273e3d]">
               Open AI reads and understands your files, and with nothing more
               than a single line of feedback, so you can go further than the
               speed of thought.

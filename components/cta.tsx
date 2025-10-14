@@ -8,7 +8,7 @@ export default function Cta() {
         <div className="py-12 md:py-20">
           <div className="mx-auto max-w-3xl text-center">
             <h2
-              className="pb-8 font-nacelle text-3xl font-semibold text-white-700 md:text-4xl"
+              className="pb-8 font-nacelle text-5xl font-semibold text-stone-100 md:text-5xl"
               data-aos="fade-up"
             >
               Join Europe's data community.
@@ -16,7 +16,7 @@ export default function Cta() {
             <div className="mx-auto max-w-xs sm:flex sm:max-w-none sm:justify-center">
               <div data-aos="fade-up" data-aos-delay={400}>
                 <a
-                  className="btn group mb-4 w-full bg-stone-100 text-[#273e3d] hover:bg-green-50 sm:mb-0 sm:w-auto"
+                  className="btn relative w-full bg-stone-100 text-[#273e3d] hover:bg-green-50 sm:ml-4 sm:w-auto cursor-pointer text-xl rounded-full"
                   href="#0"
                 >
                   <span className="relative inline-flex items-center">
@@ -25,14 +25,6 @@ export default function Cta() {
                       -&gt;
                     </span>
                   </span>
-                </a>
-              </div>
-              <div data-aos="fade-up" data-aos-delay={600}>
-                <a
-                  className="btn relative w-full bg-stone-100 text-[#273e3d] hover:bg-green-50 sm:ml-4 sm:w-auto"
-                  href="#0"
-                >
-                  Pricing
                 </a>
               </div>
             </div>

@@ -1,7 +1,7 @@
 import Image from "next/image";
-import WorflowImg01 from "@/public/images/workflow-01.png";
-import WorflowImg02 from "@/public/images/workflow-02.png";
-import WorflowImg03 from "@/public/images/workflow-03.png";
+import WorflowImg01 from "@/public/images/build.jpg";
+import WorflowImg02 from "@/public/images/connect.jpg";
+import WorflowImg03 from "@/public/images/grow.jpg";
 import Spotlight from "@/components/spotlight";
 
 export default function Workflows() {
@@ -11,10 +11,10 @@ export default function Workflows() {
         <div className="pb-12 pt-16 md:pb-20 md:pt-24">
           {/* Section header */}
           <div className="mx-auto max-w-3xl pb-16 text-center md:pb-24">
-            <h2 className="pb-4 font-nacelle text-3xl font-semibold text-stone-700 md:text-4xl">
+            <h2 className="pb-4 font-nacelle text-4xl font-semibold text-[#273e3d] md:text-4xl">
               Built by the community, powered by you.
             </h2>
-            <p className="text-lg text-stone-600">
+            <p className="mb-8 text-xl text-[#273e3d]">
               Join Europe's community-driven platform in three simple steps. Connect with opportunities shared by professionals, contribute your expertise, and grow alongside builders shaping the future of data and AI.
             </p>
           </div>
@@ -36,9 +36,7 @@ export default function Workflows() {
                 hover:after:opacity-30 group-hover:before:opacity-100"
               href="#0"
             >
-              <div className="relative z-20 h-full overflow-hidden rounded-[inherit] bg-stone-100 
-                after:absolute after:inset-0 after:bg-linear-to-br 
-                after:from-stone-200/50 after:via-stone-100/25 after:to-stone-200/50"
+              <div className="relative z-20 h-full overflow-hidden rounded-[inherit] bg-[#273e3d]"
               >
                 {/* Number 1 */}
                 <div
@@ -69,12 +67,12 @@ export default function Workflows() {
                       before:[mask:linear-gradient(white_0_0)_padding-box,_linear-gradient(white_0_0)] 
                       hover:bg-stone-200/60"
                     >
-                      <span className="bg-linear-to-r from-[#273e3d] to-[#355c58] bg-clip-text text-transparent">
+                      <span className="bg-linear-to-r from-[white] to-[silver] bg-clip-text text-transparent">
                         Build.
                       </span>
                     </span>
                   </div>
-                  <p className="text-stone-700">
+                  <p className="text-stone-100">
                     Establish your presence and contribute to the community by sharing your insights and opportunities with fellow data builders.
                   </p>
                 </div>
@@ -96,15 +94,12 @@ export default function Workflows() {
                 hover:after:opacity-30 group-hover:before:opacity-100"
               href="#0"
             >
-              <div className="relative z-20 h-full overflow-hidden rounded-[inherit] bg-stone-100 
-                after:absolute after:inset-0 after:bg-linear-to-br 
-                after:from-stone-200/50 after:via-stone-100/25 after:to-stone-200/50"
-              >
+              <div className="relative z-20 h-full overflow-hidden rounded-[inherit] bg-[#273e3d]">
                 {/* Number 2 */}
                 <div
                   className="absolute right-6 top-6 flex h-8 w-8 items-center justify-center 
                     rounded-full border border-stone-300/50 bg-stone-200/65 
-                    text-green-800 opacity-100"
+                    text-[#273e3d] opacity-100"
                   aria-hidden="true"
                 >
                   <span className="text-lg font-bold">2</span>
@@ -129,12 +124,12 @@ export default function Workflows() {
                       before:[mask:linear-gradient(white_0_0)_padding-box,_linear-gradient(white_0_0)] 
                       hover:bg-stone-200/60"
                     >
-                      <span className="bg-linear-to-r from-[#273e3d] to-[#355c58] bg-clip-text text-transparent">
+                      <span className="bg-linear-to-r from-[white] to-[silver] bg-clip-text text-transparent">
                         Connect.
                       </span>
                     </span>
                   </div>
-                  <p className="text-stone-700">
+                  <p className="text-stone-100">
                     Find your next role through a network powered by professionals who understand your craft.
                   </p>
                 </div>
@@ -156,15 +151,12 @@ export default function Workflows() {
                 hover:after:opacity-30 group-hover:before:opacity-100"
               href="#0"
             >
-              <div className="relative z-20 h-full overflow-hidden rounded-[inherit] bg-stone-100 
-                after:absolute after:inset-0 after:bg-linear-to-br 
-                after:from-stone-200/50 after:via-stone-100/25 after:to-stone-200/50"
-              >
+              <div className="relative z-20 h-full overflow-hidden rounded-[inherit] bg-[#273e3d]">
                 {/* Number 3 */}
                 <div
                   className="absolute right-6 top-6 flex h-8 w-8 items-center justify-center 
                     rounded-full border border-stone-300/50 bg-stone-200/65 
-                    text-green-800 opacity-100"
+                    text-[#273e3d] opacity-100"
                   aria-hidden="true"
                 >
                   <span className="text-lg font-bold">3</span>
@@ -189,12 +181,12 @@ export default function Workflows() {
                       before:[mask:linear-gradient(white_0_0)_padding-box,_linear-gradient(white_0_0)] 
                       hover:bg-stone-200/60"
                     >
-                      <span className="bg-linear-to-r from-[#273e3d] to-[#355c58] bg-clip-text text-transparent">
+                      <span className="bg-linear-to-r from-[white] to-[silver] bg-clip-text text-transparent">
                         Grow.
                       </span>
                     </span>
                   </div>
-                  <p className="text-stone-700">
+                  <p className="text-stone-100">
                     Advance your career alongside a community of builders forging the future of data.
                   </p>
                 </div>

@@ -45,7 +45,7 @@ export default function Header() {
                 <li>
                   <Link
                     href="/private"
-                    className="btn group w-full bg-stone-100 text-[#273e3d] hover:bg-green-50 sm:w-auto px-4 py-2 text-base font-medium"
+                    className="btn relative w-full bg-stone-100 text-[#273e3d] hover:bg-green-50 sm:ml-4 sm:w-auto cursor-pointer text-xl rounded-full"
                   >
                     <span className="relative inline-flex items-center">
                       Sign In
@@ -55,7 +55,7 @@ export default function Header() {
                 <li>
                   <Link
                     href="/signup"
-                    className="btn group w-full bg-[#273e3d] text-white hover:bg-[#355c58] sm:w-auto px-4 py-2 text-base font-medium"
+                    className="btn group w-full bg-[#273e3d] text-white hover:bg-[#355c58] sm:w-auto px-4 py-2 text-base text-xl rounded-full"
                   >
                     Register
                   </Link>
