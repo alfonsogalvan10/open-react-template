@@ -20,7 +20,7 @@ export default function Cta() {
                   href="#0"
                 >
                   <span className="relative inline-flex items-center">
-                    Explore Jobs
+                    Try Now
                     <span className="ml-1 tracking-normal text-[#273e3d] transition-transform group-hover:translate-x-0.5">
                       -&gt;
                     </span>

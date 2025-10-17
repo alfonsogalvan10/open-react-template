@@ -68,12 +68,12 @@ export default function Workflows() {
                       hover:bg-stone-200/60"
                     >
                       <span className="bg-linear-to-r from-[white] to-[silver] bg-clip-text text-transparent">
-                        Build.
+                        Discover
                       </span>
                     </span>
                   </div>
                   <p className="text-stone-100">
-                    Establish your presence and contribute to the community by sharing your insights and opportunities with fellow data builders.
+                    Browse curated prominent opportunities shared by the European data community.
                   </p>
                 </div>
               </div>
@@ -125,12 +125,12 @@ export default function Workflows() {
                       hover:bg-stone-200/60"
                     >
                       <span className="bg-linear-to-r from-[white] to-[silver] bg-clip-text text-transparent">
-                        Connect.
+                        Contribute
                       </span>
                     </span>
                   </div>
                   <p className="text-stone-100">
-                    Find your next role through a network powered by professionals who understand your craft.
+                    Share opportunities and insights from your network and contribute to the community.
                   </p>
                 </div>
               </div>
@@ -182,12 +182,12 @@ export default function Workflows() {
                       hover:bg-stone-200/60"
                     >
                       <span className="bg-linear-to-r from-[white] to-[silver] bg-clip-text text-transparent">
-                        Grow.
+                        Advance
                       </span>
                     </span>
                   </div>
                   <p className="text-stone-100">
-                    Advance your career alongside a community of builders forging the future of data.
+                    Stay ahead of Europe's data market with real-time intelligence powered by community contributions.
                   </p>
                 </div>
               </div>

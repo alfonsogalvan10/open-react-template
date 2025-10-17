@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 export default function Header() {
   const pathname = usePathname(); // Get the current route
   const [isSignedIn, setIsSignedIn] = useState(false);
+  const [isScrollingDown, setIsScrollingDown] = useState(false);
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -21,16 +22,30 @@ export default function Header() {
     };
 
     checkAuth();
+
+    let lastScrollY = window.scrollY;
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      setIsScrollingDown(currentScrollY > lastScrollY);
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   console.log("Currently signed in:", isSignedIn); // Log the current signed in status
 
   return (
-    <header className="z-30 w-full bg-stone-200 pt-12 pb-4 md:pt-6 md:pb-6 sticky top-0">
+    <header className="z-30 w-full bg-transparent pt-12 pb-4 md:pt-6 md:pb-6 sticky top-0">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="relative flex h-14 items-center justify-between gap-3 rounded-2xl bg-stone-200 px-3">
+        <div className="relative flex h-14 items-center justify-between gap-3 rounded-2xl bg-transparent px-3">
           {/* Site branding */}
-          <div className="flex flex-1 items-center">
+          <div
+            className={`flex flex-1 items-center transition-transform duration-300 ${
+              isScrollingDown ? "-translate-y-full" : "translate-y-0"
+            }`}
+          >
             <Logo />
           </div>
 
