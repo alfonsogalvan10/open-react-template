@@ -1,6 +1,6 @@
 import Image from "next/image";
-import WorflowImg01 from "@/public/images/build.jpg";
-import WorflowImg02 from "@/public/images/connect.jpg";
+import WorflowImg01 from "@/public/images/discover.jpg";
+import WorflowImg02 from "@/public/images/contribute.jpg";
 import WorflowImg03 from "@/public/images/grow.jpg";
 import Spotlight from "@/components/spotlight";
 
@@ -36,7 +36,7 @@ export default function Workflows() {
                 hover:after:opacity-30 group-hover:before:opacity-100"
               href="#0"
             >
-              <div className="relative z-20 h-full overflow-hidden rounded-[inherit] bg-[#273e3d]"
+              <div className="relative z-20 h-full overflow-hidden rounded-[inherit] bg-white"
               >
                 {/* Number 1 */}
                 <div
@@ -49,10 +49,10 @@ export default function Workflows() {
                 </div>
                 {/* Image */}
                 <Image
-                  className="inline-flex"
+                  className="inline-flex h-85 object-fill"
                   src={WorflowImg01}
                   width={350}
-                  height={288}
+                  height={350}
                   alt="Workflow 01"
                 />
                 {/* Content */}
@@ -67,12 +67,12 @@ export default function Workflows() {
                       before:[mask:linear-gradient(white_0_0)_padding-box,_linear-gradient(white_0_0)] 
                       hover:bg-stone-200/60"
                     >
-                      <span className="bg-linear-to-r from-[white] to-[silver] bg-clip-text text-transparent">
+                      <span className="font-nacelle text-lg font-semibold text-[#273e3d]">
                         Discover
                       </span>
                     </span>
                   </div>
-                  <p className="text-stone-100">
+                  <p className="font-nacelle text-sm text-[#273e3d]">
                     Browse curated prominent opportunities shared by the European data community.
                   </p>
                 </div>
@@ -94,7 +94,7 @@ export default function Workflows() {
                 hover:after:opacity-30 group-hover:before:opacity-100"
               href="#0"
             >
-              <div className="relative z-20 h-full overflow-hidden rounded-[inherit] bg-[#273e3d]">
+              <div className="relative z-20 h-full overflow-hidden rounded-[inherit] bg-white">
                 {/* Number 2 */}
                 <div
                   className="absolute right-6 top-6 flex h-8 w-8 items-center justify-center 
@@ -106,10 +106,10 @@ export default function Workflows() {
                 </div>
                 {/* Image */}
                 <Image
-                  className="inline-flex"
+                  className="inline-flex h-85 object-fill"
                   src={WorflowImg02}
                   width={350}
-                  height={288}
+                  height={350}
                   alt="Workflow 02"
                 />
                 {/* Content */}
@@ -124,12 +124,12 @@ export default function Workflows() {
                       before:[mask:linear-gradient(white_0_0)_padding-box,_linear-gradient(white_0_0)] 
                       hover:bg-stone-200/60"
                     >
-                      <span className="bg-linear-to-r from-[white] to-[silver] bg-clip-text text-transparent">
+                      <span className="font-nacelle text-lg font-semibold text-[#273e3d]">
                         Contribute
                       </span>
                     </span>
                   </div>
-                  <p className="text-stone-100">
+                  <p className="font-nacelle text-sm text-[#273e3d]">
                     Share opportunities and insights from your network and contribute to the community.
                   </p>
                 </div>
@@ -151,7 +151,7 @@ export default function Workflows() {
                 hover:after:opacity-30 group-hover:before:opacity-100"
               href="#0"
             >
-              <div className="relative z-20 h-full overflow-hidden rounded-[inherit] bg-[#273e3d]">
+              <div className="relative z-20 h-full overflow-hidden rounded-[inherit] bg-white">
                 {/* Number 3 */}
                 <div
                   className="absolute right-6 top-6 flex h-8 w-8 items-center justify-center 
@@ -163,10 +163,10 @@ export default function Workflows() {
                 </div>
                 {/* Image */}
                 <Image
-                  className="inline-flex"
+                  className="inline-flex h-85 object-fill"
                   src={WorflowImg03}
                   width={350}
-                  height={288}
+                  height={350}
                   alt="Workflow 03"
                 />
                 {/* Content */}
@@ -181,12 +181,12 @@ export default function Workflows() {
                       before:[mask:linear-gradient(white_0_0)_padding-box,_linear-gradient(white_0_0)] 
                       hover:bg-stone-200/60"
                     >
-                      <span className="bg-linear-to-r from-[white] to-[silver] bg-clip-text text-transparent">
+                      <span className="font-nacelle text-lg font-semibold text-[#273e3d]">
                         Advance
                       </span>
                     </span>
                   </div>
-                  <p className="text-stone-100">
+                  <p className="font-nacelle text-sm text-[#273e3d]">
                     Stay ahead of Europe's data market with real-time intelligence powered by community contributions.
                   </p>
                 </div>
