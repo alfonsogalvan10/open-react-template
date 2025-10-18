@@ -14,10 +14,6 @@ export default function Features() {
             <h2 className="pb-4 font-nacelle text-4xl font-semibold text-[#273e3d] md:text-4xl">
               Everyone contributes, everyone benefits.
             </h2>
-            <p className="mb-8 text-xl text-[#273e3d]">
-              Find what's actually worth your time. Contributors bring opportunities from Europe's most innovative companies. 
-              Members skip the noise and explore curated data roles at startups building products that matter.
-            </p>
           </div>
           {/* <div className="flex justify-center pb-4 md:pb-12" data-aos="fade-up">
             <Image
