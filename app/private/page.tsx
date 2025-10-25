@@ -44,19 +44,19 @@ export default async function PrivatePage() {
   });
 
   return (
-    <section className="bg-white">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="py-12 md:py-20">
-          <h1 className="text-gray-900 text-3xl font-semibold mb-8">
-            Welcome back, {profile?.full_name || user.user.email}!
-          </h1>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {jobsWithDomains && jobsWithDomains.length > 0 ? (
-              jobsWithDomains.map((job) => (
-                <article
-                  key={job.id}
-                  className="group border border-gray-200 rounded-lg shadow-md"
-                >
+    <section className="bg-stone-200 min-h-screen px-4 sm:px-6">
+      <div className="mx-auto max-w-6xl py-12 md:py-20">
+        <h1 className="pb-5 font-nacelle text-4xl font-semibold text-[#273e3d] text-center">
+          Welcome back, {profile?.full_name || user.user.email}!
+        </h1>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {jobsWithDomains && jobsWithDomains.length > 0 ? (
+            jobsWithDomains.map((job) => (
+              <article
+                key={job.id}
+                className="group border border-gray-200 rounded-2xl shadow-lg p-4 bg-white flex flex-col gap-4"
+              >
+                <div className="flex items-center gap-4">
                   <img
                     alt={`${job.company} logo`}
                     src={
@@ -64,30 +64,43 @@ export default async function PrivatePage() {
                         ? `https://cdn.brandfetch.io/${job.domain}`
                         : 'https://via.placeholder.com/150'
                     }
-                    className="h-32 w-full rounded-t-xl bg-gray-100"
+                    className="h-12 w-12 rounded-full bg-gray-100"
                   />
-                  <div className="p-2">
-                    <h3 className="text-gray-900 font-semibold text-gray-900">
+                  <div>
+                    <h3 className="text-gray-900 font-semibold text-lg">
                       {job.title}
                     </h3>
-                    <p className="text-xs text-gray-500">{job.company}</p>
-                    <a
-                      href={job.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn w-full bg-stone-100 text-[#273e3d] hover:bg-green-50 mt-2"
-                    >
-                      View Job
-                    </a>
+                    <p className="text-sm text-gray-500">{job.company}</p>
                   </div>
-                </article>
-              ))
-            ) : (
-              <p className="text-center text-gray-500 col-span-full">
-                No jobs available at the moment. Please check back later.
-              </p>
-            )}
-          </div>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  <span className="btn bg-gray-100 text-gray-700 hover:bg-gray-200 py-2 rounded-full">Senior</span>
+                  <span className="btn bg-gray-100 text-gray-700 hover:bg-gray-200 py-2 rounded-full">100-150K</span>
+                  <span className="btn bg-gray-100 text-gray-700 hover:bg-gray-200 py-2 rounded-full">Remote</span>
+                </div>
+                <div className="border-t border-gray-200 pt-4">
+                  <p className="text-sm text-gray-700 italic">“Fast-moving team with strong eng culture.”</p>
+                </div>
+                <div className="flex justify-between gap-4">
+                  <button className="btn w-full bg-gray-100 text-gray-700 hover:bg-gray-200 py-2 rounded-full cursor-pointer">
+                    View company info
+                  </button>
+                  <a
+                    href={job.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn w-full bg-[#273e3d] text-white hover:bg-[#355c58] py-2 rounded-full cursor-pointer"
+                  >
+                    Apply
+                  </a>
+                </div>
+              </article>
+            ))
+          ) : (
+            <p className="text-center text-gray-500 col-span-full">
+              No jobs available at the moment. Please check back later.
+            </p>
+          )}
         </div>
       </div>
     </section>

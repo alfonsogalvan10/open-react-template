@@ -47,6 +47,11 @@ export async function updateSession(request: NextRequest) {
     const url = request.nextUrl.clone()
     url.pathname = '/signin'
     return NextResponse.redirect(url)
+  } else if (request.nextUrl.pathname !== '/private') {
+    // user is logged in and not already on /private
+    const url = request.nextUrl.clone()
+    url.pathname = '/private'
+    return NextResponse.redirect(url)
   }
 
   // IMPORTANT: You *must* return the supabaseResponse object as it is.
