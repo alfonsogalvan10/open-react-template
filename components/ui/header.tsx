@@ -37,7 +37,7 @@ export default function Header() {
   console.log("Currently signed in:", isSignedIn); // Log the current signed in status
 
   return (
-    <header className="z-30 w-full bg-transparent pt-12 pb-4 md:pt-6 md:pb-6 sticky top-0">
+    <header className="z-30 w-full bg-transparent pt-2 pb-1 md:pt-2 md:pb-1 sticky top-0">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="relative flex h-14 items-center justify-between gap-3 rounded-2xl bg-transparent px-3">
           {/* Site branding */}
