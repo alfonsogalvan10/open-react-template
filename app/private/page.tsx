@@ -74,12 +74,17 @@ export default async function PrivatePage() {
                   </div>
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  <span className="btn bg-gray-100 text-gray-700 hover:bg-gray-200 py-2 rounded-full">Senior</span>
-                  <span className="btn bg-gray-100 text-gray-700 hover:bg-gray-200 py-2 rounded-full">100-150K</span>
-                  <span className="btn bg-gray-100 text-gray-700 hover:bg-gray-200 py-2 rounded-full">Remote</span>
+                  {job.tags?.map((tag: string, index: number) => (
+                    <span
+                      key={index}
+                      className="btn bg-gray-100 text-gray-700 hover:bg-gray-200 py-2 rounded-full"
+                    >
+                      {tag}
+                    </span>
+                  ))}
                 </div>
                 <div className="border-t border-gray-200 pt-4">
-                  <p className="text-sm text-gray-700 italic">“Fast-moving team with strong eng culture.”</p>
+                  <p className="text-sm text-gray-700 italic">“{job.why_this_job}”</p>
                 </div>
                 <div className="flex justify-between gap-4">
                   <button className="btn w-full bg-gray-100 text-gray-700 hover:bg-gray-200 py-2 rounded-full cursor-pointer">

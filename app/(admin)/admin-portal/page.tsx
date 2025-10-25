@@ -45,18 +45,18 @@ export default async function PrivatePage() {
   });
 
   return (
-    <section className="bg-white">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="py-12 md:py-20">
-          <h1 className="text-gray-900 text-3xl font-semibold mb-8">
-            Admin Portal
-          </h1>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {jobsWithDomains?.map((job) => (
-              <article
-                key={job.id}
-                className="group border border-gray-200 rounded-lg shadow-md"
-              >
+    <section className="bg-stone-200 min-h-screen px-4 sm:px-6">
+      <div className="mx-auto max-w-6xl py-12 md:py-20">
+        <h1 className="pb-5 font-nacelle text-4xl font-semibold text-[#273e3d] text-center">
+          Admin Portal
+        </h1>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {jobsWithDomains?.map((job) => (
+            <article
+              key={job.id}
+              className="group border border-gray-200 rounded-2xl shadow-lg p-4 bg-white flex flex-col gap-4"
+            >
+              <div className="flex items-center gap-4">
                 <img
                   alt={`${job.company} logo`}
                   src={
@@ -64,18 +64,20 @@ export default async function PrivatePage() {
                       ? `https://cdn.brandfetch.io/${job.domain}`
                       : 'https://via.placeholder.com/150'
                   }
-                  className="h-32 w-full rounded-t-xl bg-gray-100"
+                  className="h-12 w-12 rounded-full bg-gray-100"
                 />
-                <div className="p-2">
-                  <h3 className="text-gray-900 font-semibold text-gray-900">
+                <div>
+                  <h3 className="text-gray-900 font-semibold text-lg">
                     {job.title}
                   </h3>
-                  <p className="text-xs text-gray-500">{job.company}</p>
-                  <ApproveButton jobId={job.id} />
+                  <p className="text-sm text-gray-500">{job.company}</p>
                 </div>
-              </article>
-            ))}
-          </div>
+              </div>
+              <div className="flex justify-end gap-4">
+                <ApproveButton jobId={job.id} />
+              </div>
+            </article>
+          ))}
         </div>
       </div>
     </section>
