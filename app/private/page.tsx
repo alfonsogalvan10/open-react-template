@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
 import { createClient } from '@/utils/supabase/server';
-import JobCard from '@/components/JobCard';
+import EmblaCarousel from '@/components/EmblaCarousel';
 
 export default async function PrivatePage() {
   const supabase = await createClient();
@@ -45,20 +45,18 @@ export default async function PrivatePage() {
   });
 
   return (
-    <section className="bg-stone-200 min-h-screen px-4 sm:px-6">
+    <section className="bg-stone-200 min-h-[calc(100vh-4rem)] px-4 sm:px-6"> {/* Dynamic height */}
       <div className="mx-auto max-w-6xl py-12 md:py-20">
         <h1 className="pb-5 font-nacelle text-4xl font-semibold text-[#273e3d] text-center">
           Welcome back, {profile?.full_name || user.user.email}!
         </h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {jobsWithDomains && jobsWithDomains.length > 0 ? (
-            jobsWithDomains.map((job) => <JobCard key={job.id} job={job} />)
-          ) : (
-            <p className="text-center text-gray-500 col-span-full">
-              No jobs available at the moment. Please check back later.
-            </p>
-          )}
-        </div>
+        {jobsWithDomains && jobsWithDomains.length > 0 ? (
+          <EmblaCarousel slides={jobsWithDomains} options={{ loop: true }} />
+        ) : (
+          <p className="text-center text-gray-500">
+            No jobs available at the moment. Please check back later.
+          </p>
+        )}
       </div>
     </section>
   );
