@@ -7,7 +7,7 @@
   align-items: center; /* Center the container vertically */
   --slide-height: 19rem;
   --slide-spacing: 1rem;
-  --slide-size: 60%; /* Reduce slide size for better alignment */
+  --slide-size: 45%; /* Reduce slide size for better alignment */
 }
 
 .embla__container {
@@ -20,6 +20,7 @@
   transform: translate3d(0, 0, 0);
   flex: 0 0 var(--slide-size);
   min-width: 0;
+  max-width: 35%;
   padding-left: var(--slide-spacing);
 }
 

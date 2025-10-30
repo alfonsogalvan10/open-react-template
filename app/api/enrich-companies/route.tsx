@@ -1,14 +1,25 @@
-import createClient from '@thecompaniesapi/sdk';
+import createClient from "@thecompaniesapi/sdk";
 
 export async function POST(req: Request) {
   try {
     const { companyDomain } = await req.json();
+
+    // Log the received body to the console
+    console.log("Received body:", { companyDomain });
 
     if (!companyDomain) {
       return new Response(JSON.stringify({ error: "Missing companyDomain" }), {
         status: 400,
       });
     }
+
+    // Extract the actual domain (e.g., "coverflex.com") from subdomains
+    const parsedDomain =
+      companyDomain.includes(".")
+        ? companyDomain.split(".").slice(-2).join(".")
+        : companyDomain;
+
+    console.log("Parsed domain:", parsedDomain);
 
     const apiToken = process.env.COMPANIES_API_TOKEN;
     if (!apiToken) {
@@ -19,7 +30,7 @@ export async function POST(req: Request) {
 
     const tca = createClient({ apiToken });
 
-    const response = await tca.fetchCompany({ domain: companyDomain });
+    const response = await tca.fetchCompany({ domain: parsedDomain });
 
     if (!response || !response.data) {
       return new Response(JSON.stringify({ error: "No data returned from API" }), {
