@@ -17,10 +17,10 @@ export default function Cta() {
               <div data-aos="fade-up" data-aos-delay={400}>
                 <a
                   className="btn relative w-full bg-stone-100 text-[#273e3d] hover:bg-green-50 sm:ml-4 sm:w-auto cursor-pointer text-xl rounded-full"
-                  href="#0"
+                  href="/submit-job"
                 >
                   <span className="relative inline-flex items-center">
-                    Try Now
+                    Contribute now
                     <span className="ml-1 tracking-normal text-[#273e3d] transition-transform group-hover:translate-x-0.5">
                       -&gt;
                     </span>

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import JobModal from "./JobModal";
+import Avvvatars from "avvvatars-react";
 
 interface JobCardProps {
   job: {
@@ -12,6 +13,7 @@ interface JobCardProps {
     domain: string | null;
     tags?: string[];
     why_this_job?: string;
+    contributor_full_name?: string; // Contributor's name from the profiles table
   };
 }
 
@@ -53,7 +55,12 @@ export default function JobCard({ job }: JobCardProps) {
           ))}
         </div>
         <div className="border-t border-gray-200 pt-4">
-          <p className="text-sm text-gray-700 italic">“{job.why_this_job}”</p>
+          <div className="flex items-center gap-4">
+            <div className="flex-shrink-0">
+              <Avvvatars value={job.contributor_full_name || "Unknown"} style="character" size={40} />
+            </div>
+            <p className="text-sm text-gray-700 italic">“{job.why_this_job}”</p>
+          </div>
         </div>
         <div className="flex justify-between gap-4">
           <button

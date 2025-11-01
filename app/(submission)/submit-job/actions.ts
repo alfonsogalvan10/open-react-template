@@ -13,6 +13,15 @@ export async function insertJob(formData: FormData): Promise<string> {
   const why_this_job = formData.get('why-this-job') as string;
   const tags = (formData.get('tags') as string)?.split(',').map(tag => tag.trim());
 
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
+
+  // Ensure user is authenticated
+  if (!user) {
+    throw new Error('User not authenticated');
+  }
+
   // Validate required fields
   if (!title || !company || !url || !why_this_job || !tags) {
     throw new Error('Missing required fields: title, company, url, why_this_job, or tags');
@@ -22,7 +31,7 @@ export async function insertJob(formData: FormData): Promise<string> {
     // Insert the new job record into the "jobs" table
     const { data, error } = await supabase
       .from('jobs')
-      .insert([{ title, company, url, why_this_job, tags }]);
+      .insert([{ title, company, url, why_this_job, tags, contributor_id: user.id }]);
 
     if (error) {
       console.error('Error inserting job:', error);

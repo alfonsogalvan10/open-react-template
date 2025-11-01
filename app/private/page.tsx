@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/utils/supabase/server";
 import EmblaCarousel from "@/components/EmblaCarousel";
+import Avvvatars from 'avvvatars-react';
 
 export default async function PrivatePage() {
   const supabase = await createClient();
@@ -25,7 +26,7 @@ export default async function PrivatePage() {
   // Fetch jobs
   const { data: jobs, error: jobsError } = await supabase
     .from("jobs")
-    .select()
+    .select("id, title, company, url, tags, why_this_job, contributor_full_name")
     .eq("approved", true);
 
   if (jobsError) {
@@ -57,11 +58,12 @@ export default async function PrivatePage() {
     <section className="bg-stone-200 min-h-[calc(100vh-4rem)] px-4 sm:px-6">
       {/* Main Content */}
       <div className="mx-auto max-w-6xl py-12 md:py-20">
-        <h1 className="pb-5 font-nacelle text-4xl font-semibold text-[#273e3d] text-center">
+        <h1 className="pb-5 font-nacelle text-4xl font-semibold text-[#273e3d] text-center flex items-center justify-center gap-4">
           Hey {profile?.full_name || user.user.email}!
-        </h1>  
+          <Avvvatars value="alfonso@mgmail.com" style="shape" size={80} />
+        </h1>
         {/* Logo Bar */}
-        
+
         <div className="flex items-center justify-center gap-8 py-4 bg-transparent">
           {uniqueDomainCompanyPairs.map((job, index) => (
             <div key={index} className="flex flex-col items-center">
@@ -77,13 +79,13 @@ export default async function PrivatePage() {
             </div>
           ))}
         </div>
-          {jobsWithDomains && jobsWithDomains.length > 0 ? (
-            <EmblaCarousel slides={jobsWithDomains} options={{ loop: true }} />
-          ) : (
-            <p className="text-center text-gray-500">
-              No jobs available at the moment. Please check back later.
-            </p>
-          )}
+        {jobsWithDomains && jobsWithDomains.length > 0 ? (
+          <EmblaCarousel slides={jobsWithDomains} options={{ loop: true, watchDrag: false }} />
+        ) : (
+          <p className="text-center text-gray-500">
+            No jobs available at the moment. Please check back later.
+          </p>
+        )}
       </div>
     </section>
   );
