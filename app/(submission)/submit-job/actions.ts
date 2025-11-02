@@ -1,9 +1,9 @@
 'use server'
 
-import { createClient } from '@/utils/supabase/server'; // Adjust the path to your Supabase client
+import { createClient } from '@/utils/supabase/server';
+import { redirect } from 'next/navigation';
 
-
-export async function insertJob(formData: FormData): Promise<string> {
+export async function insertJob(formData: FormData): Promise<void> {
   const supabase = await createClient();
 
   // Extract form data
@@ -15,34 +15,23 @@ export async function insertJob(formData: FormData): Promise<string> {
 
   const {
     data: { user },
-  } = await supabase.auth.getUser()
+  } = await supabase.auth.getUser();
 
   // Ensure user is authenticated
   if (!user) {
-    throw new Error('User not authenticated');
+    redirect('/error'); // Redirect to error page if user is not authenticated
   }
 
-  // Validate required fields
-  if (!title || !company || !url || !why_this_job || !tags) {
-    throw new Error('Missing required fields: title, company, url, why_this_job, or tags');
+  // Insert the new job record into the "jobs" table
+  const { error } = await supabase
+    .from('jobs')
+    .insert([{ title, company, url, why_this_job, tags, contributor_id: user.id }]);
+
+  if (error) {
+    console.error('Error inserting job:', error);
+    redirect('/error'); // Redirect to error page for any insertion error
   }
 
-  try {
-    // Insert the new job record into the "jobs" table
-    const { data, error } = await supabase
-      .from('jobs')
-      .insert([{ title, company, url, why_this_job, tags, contributor_id: user.id }]);
-
-    if (error) {
-      console.error('Error inserting job:', error);
-      throw new Error('Failed to insert job');
-    }
-
-    console.log('Job inserted successfully:', data);
-    return 'Job inserted successfully';
-  } catch (error) {
-    console.error('Error in insertJob action:', error);
-    return 'Failed to insert job';
-  }
+  redirect('/'); // Redirect to home page if insertion succeeds
 }
 

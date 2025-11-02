@@ -27,7 +27,8 @@ export default async function PrivatePage() {
   const { data: jobs, error: jobsError } = await supabase
     .from("jobs")
     .select("id, title, company, url, tags, why_this_job, contributor_full_name")
-    .eq("approved", true);
+    .eq("approved", true)
+    .eq("reviewed", true);
 
   if (jobsError) {
     console.error("Error fetching jobs:", jobsError.message);
@@ -65,7 +66,7 @@ export default async function PrivatePage() {
         {/* Logo Bar */}
 
         <div className="flex items-center justify-center gap-8 py-4 bg-transparent">
-          {uniqueDomainCompanyPairs.map((job, index) => (
+          {uniqueDomainCompanyPairs.slice(0, 5).map((job, index) => (
             <div key={index} className="flex flex-col items-center">
               <img
                 src={`https://logo.clearbit.com/${job.domain}`} // Use Clearbit API for logos
@@ -74,8 +75,7 @@ export default async function PrivatePage() {
               />
               <p className="font-nacelle text-xl font-semibold text-[#273e3d]">
                 {job.company}
-              </p>{" "}
-              {/* Company name */}
+              </p>
             </div>
           ))}
         </div>
