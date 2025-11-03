@@ -31,13 +31,8 @@ export default function JobsCarouselWithLogoFilter({ jobs }: { jobs?: Job[] }) {
   }, [jobs]);
 
   const displayedLogos = useMemo(() => {
-    if (uniqueDomainCompanyPairs.length <= 4) return uniqueDomainCompanyPairs;
-
-    // Shuffle the array
-    const shuffled = [...uniqueDomainCompanyPairs].sort(() => Math.random() - 0.5);
-
-    // Take the first 4 items
-    return shuffled.slice(0, 4);
+    // Select the last 4 items of the array
+    return uniqueDomainCompanyPairs.slice(-4);
   }, [uniqueDomainCompanyPairs]);
 
   const filteredJobs = useMemo(() => {
@@ -88,9 +83,11 @@ export default function JobsCarouselWithLogoFilter({ jobs }: { jobs?: Job[] }) {
       {filteredJobs && filteredJobs.length > 4 ? (
         <EmblaCarousel slides={filteredJobs} options={{ loop: true, watchDrag: false }} />
       ) : filteredJobs && filteredJobs.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+        <div className="embla__container_filtered">
           {filteredJobs.map((job) => (
-            <JobCard key={job.id} job={job} />
+            <div key={job.id} className="embla__slide_filtered">
+              <JobCard job={job} />
+            </div>
           ))}
         </div>
       ) : (

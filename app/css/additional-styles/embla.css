@@ -24,6 +24,22 @@
   padding-left: var(--slide-spacing);
 }
 
+.embla__container_filtered {
+  display: flex; /* Align slides in a row */
+  gap: 1rem; /* Add spacing between slides */
+  overflow-x: auto; /* Allow horizontal scrolling if needed */
+  scroll-snap-type: x mandatory; /* Enable snapping for a smooth scroll experience */
+}
+
+.embla__slide_filtered {
+  transform: translate3d(0, 0, 0);
+  flex: 0 0 var(--slide-size); /* Ensure slides have a fixed size */
+  min-width: 0;
+  max-width: 450px;
+  padding-left: var(--slide-spacing);
+  scroll-snap-align: start; /* Ensure slides snap to the start */
+}
+
 .embla__buttons {
   position: absolute;
   top: 50%;
