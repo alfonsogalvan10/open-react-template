@@ -1,12 +1,25 @@
-export const metadata = {
-  title: "Sign In - Open PRO",
-  description: "Page description",
-};
+"use client";
 
-import Link from "next/link"
-import { login } from './actions'
+import Link from "next/link";
+import { useState } from "react";
+import { login } from "./actions";
 
 export default function SignIn() {
+  const [error, setError] = useState<string | null>(null);
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const result = await login(formData);
+
+    if (result.error) {
+      setError(result.error);
+    } else {
+      // Redirect to /private on success
+      window.location.href = "/private";
+    }
+  };
+
   return (
     <section className="bg-stone-200 h-screen flex items-center justify-center">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 text-center">
@@ -27,8 +40,11 @@ export default function SignIn() {
               Sign in to access your account and explore curated data roles across Europe.
             </p>
             {/* Contact form */}
-            <form className="mx-auto max-w-[400px]">
+            <form className="mx-auto max-w-[400px]" onSubmit={handleSubmit}>
               <div className="space-y-5">
+                {error && (
+                  <p className="text-red-500 text-sm font-bold">{error}</p>
+                )}
                 <div>
                   <label
                     className="mb-1 block text-sm font-bold text-left text-[#273e3d]"
@@ -72,7 +88,7 @@ export default function SignIn() {
               </div>
               <div className="mt-6 space-y-5">
                 <button
-                  formAction={login}
+                  type="submit"
                   className="btn w-full bg-[#273e3d] text-white font-bold hover:bg-[#355c58] py-2 text-base rounded-full cursor-pointer"
                 >
                   Sign in

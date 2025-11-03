@@ -11,6 +11,17 @@ export default async function PrivatePage() {
     redirect('/signin');
   }
 
+  // Check if the user is an admin
+  const { data: userMetadata, error: metadataError } = await supabase
+    .from('profiles')
+    .select('admin')
+    .eq('id', user.user.id)
+    .single();
+
+  if (metadataError || !userMetadata?.admin) {
+    redirect('/private');
+  }
+
   // Fetch jobs
   const { data: jobs, error: jobsError } = await supabase
     .from('jobs')

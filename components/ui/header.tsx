@@ -42,7 +42,7 @@ export default function Header() {
                 <li>
                   <button
                     onClick={handleSignOut}
-                    className="btn group w-full bg-red-500 text-white hover:bg-red-600 sm:w-auto px-4 py-2 text-base text-xl rounded-full"
+                    className="btn group w-full bg-red-500 text-white hover:bg-red-600 sm:w-auto px-4 py-2 text-base text-xl rounded-full cursor-pointer"
                   >
                     Sign Out
                   </button>
