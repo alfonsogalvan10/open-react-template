@@ -23,9 +23,10 @@ export default async function PrivatePage() {
 
   const { data: jobs, error: jobsError } = await supabase
     .from("jobs")
-    .select("id, title, company, url, tags, why_this_job, contributor_full_name")
+    .select("id, title, company, url, tags, why_this_job, contributor_full_name, submitted_at")
     .eq("approved", true)
-    .eq("reviewed", true);
+    .eq("reviewed", true)
+    .order("submitted_at", { ascending: false });
 
   if (jobsError) {
     console.error("Error fetching jobs:", jobsError.message);
