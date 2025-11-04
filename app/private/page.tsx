@@ -47,7 +47,7 @@ export default async function PrivatePage() {
       <div className="mx-auto max-w-6xl py-12 md:py-20">
         <h1 className="pb-5 font-nacelle text-4xl font-semibold text-[#273e3d] text-center flex items-center justify-center gap-4">
           Hey {profile?.full_name || user.user.email}!
-          <Avvvatars value="alfonso@mgmail.com" style="shape" size={80} />
+          <Avvvatars value={profile?.full_name || user.user.email} style="shape" size={80} />
         </h1>
         <JobsCarouselWithLogoFilter jobs={jobsWithDomains} />
       </div>

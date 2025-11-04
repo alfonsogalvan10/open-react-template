@@ -4,9 +4,12 @@ import Link from "next/link";
 import Logo from "./logo";
 import { createClient } from "@/utils/supabase/client";
 import { useEffect, useState } from "react";
+import ProfileDropdown from "@/components/ProfileDropdown";
 
 export default function Header() {
   const [isSignedIn, setIsSignedIn] = useState(false);
+  const [fullName, setFullName] = useState<string>("");
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     const supabase = createClient();
@@ -14,17 +17,22 @@ export default function Header() {
       const {
         data: { session },
       } = await supabase.auth.getSession();
-      setIsSignedIn(!!session);
+
+      if (session) {
+        setIsSignedIn(true);
+        const { data: profile } = await supabase
+          .from("profiles")
+          .select("full_name, admin")
+          .eq("id", session.user.id)
+          .single();
+
+        setFullName(profile?.full_name || "User");
+        setIsAdmin(profile?.admin || false);
+      }
     };
 
     checkAuth();
   }, []);
-
-  const handleSignOut = async () => {
-    const supabase = createClient();
-    await supabase.auth.signOut();
-    window.location.href = "/"; // Redirect to home or sign-in page
-  };
 
   return (
     <header className="z-30 w-full bg-transparent pt-2 pb-1 md:pt-2 md:pb-1 sticky top-0">
@@ -38,16 +46,9 @@ export default function Header() {
           {/* Desktop sign in links */}
           <ul className="flex flex-1 items-center justify-end gap-3">
             {isSignedIn ? (
-              <>
-                <li>
-                  <button
-                    onClick={handleSignOut}
-                    className="btn group w-full bg-red-500 text-white hover:bg-red-600 sm:w-auto px-4 py-2 text-base text-xl rounded-full cursor-pointer"
-                  >
-                    Sign Out
-                  </button>
-                </li>
-              </>
+              <li>
+                <ProfileDropdown fullName={fullName} isAdmin={isAdmin} />
+              </li>
             ) : (
               <>
                 <li>

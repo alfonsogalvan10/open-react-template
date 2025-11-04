@@ -2,42 +2,46 @@
 
 import { useState } from "react";
 import { insertJob } from "./actions";
+import { FaGlobe, FaBuilding, FaBriefcase, FaBolt, FaWrench, FaPalette, FaDatabase, FaSeedling, FaRocket } from "react-icons/fa";
 
 export default function SubmitJobForm() {
-  const [tags, setTags] = useState<string[]>([]); // State to manage tags
-  const [currentTag, setCurrentTag] = useState<string>(""); // State for the current tag being typed
+  const [selectedTags, setSelectedTags] = useState<string[]>([]); // State to manage selected tags
 
-  const handleTagInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value;
+  // Hardcoded tag options with icons
+  const tagOptions = [
+    { label: "Remote", icon: <FaGlobe /> },
+    { label: "Hybrid", icon: <FaBuilding /> },
+    { label: "Full-time", icon: <FaBriefcase /> },
+    { label: "Contract", icon: <FaBolt /> },
+    { label: "Backend Engineer", icon: <FaWrench /> },
+    { label: "Product Designer", icon: <FaPalette /> },
+    { label: "Data Engineer", icon: <FaDatabase /> },
+    { label: "Entry-level", icon: <FaSeedling /> },
+    { label: "Senior", icon: <FaRocket /> },
+  ];
 
-    // Check if the user typed a comma
-    if (value.includes(",")) {
-      const newTag = value.replace(",", "").trim(); // Remove the comma and trim spaces
-      if (newTag && !tags.includes(newTag) && tags.length < 4) {
-        setTags((prevTags) => [...prevTags, newTag]); // Add the new tag to the list
-      }
-      setCurrentTag(""); // Clear the input field
-    } else {
-      setCurrentTag(value); // Update the current tag being typed
+  const toggleTagSelection = (tag: string) => {
+    if (selectedTags.includes(tag)) {
+      // Remove tag if already selected
+      setSelectedTags((prevTags) => prevTags.filter((t) => t !== tag));
+    } else if (selectedTags.length < 4) {
+      // Add tag if not already selected and limit is not reached
+      setSelectedTags((prevTags) => [...prevTags, tag]);
     }
-  };
-
-  const removeTag = (tagToRemove: string) => {
-    setTags((prevTags) => prevTags.filter((tag) => tag !== tagToRemove)); // Remove the tag
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
 
-    // Add tags to the form data
-    formData.append("tags", tags.join(","));
+    // Add selected tags to the form data
+    formData.append("tags", selectedTags.join(","));
 
     await insertJob(formData);
   };
 
   return (
-    <section className="bg-stone-200 h-screen flex items-center justify-center">
+    <section className="bg-stone-200 min-h-screen flex items-center justify-center py-12">
       <div className="bg-white border border-stone-300 rounded-2xl shadow-lg p-8 max-w-md w-full">
         <h2 className="pb-5 text-2xl font-semibold text-[#273e3d] text-center">
           Submit a Job
@@ -94,7 +98,7 @@ export default function SubmitJobForm() {
               required
             />
           </div>
-          {/* Tags Input */}
+          {/* Tags Selection */}
           <div>
             <label
               className="mb-1 block text-sm font-bold text-left text-[#273e3d]"
@@ -102,37 +106,25 @@ export default function SubmitJobForm() {
             >
               Tags <span className="text-red-500">*</span>
             </label>
-            <div className="flex flex-wrap items-center gap-2">
-              {tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="bg-[#273e3d] text-white text-sm font-medium px-2 py-1 rounded-full flex items-center gap-2"
+            <div className="flex flex-wrap gap-2">
+              {tagOptions.map(({ label, icon }) => (
+                <button
+                  key={label}
+                  type="button"
+                  onClick={() => toggleTagSelection(label)}
+                  className={`px-3 py-1 rounded-full text-sm font-medium flex items-center gap-2 cursor-pointer ${
+                    selectedTags.includes(label)
+                      ? "bg-[#273e3d] text-white"
+                      : "bg-stone-100 text-[#273e3d] border border-stone-300"
+                  } hover:bg-[#355c58] hover:text-white transition-colors`}
                 >
-                  {tag}
-                  <button
-                    type="button"
-                    onClick={() => removeTag(tag)}
-                    className="text-red-500 hover:text-red-700"
-                  >
-                    &times;
-                  </button>
-                </span>
+                  {icon} {label}
+                </button>
               ))}
             </div>
-            <input
-              id="tags"
-              name="tags"
-              type="text"
-              value={currentTag}
-              onChange={handleTagInput}
-              className="form-input w-full bg-stone-100 text-[#273e3d] placeholder-[#273e3d] rounded-lg border border-stone-300 focus:ring-2 focus:ring-[#355c58] focus:outline-none mt-2"
-              placeholder={
-                tags.length < 4
-                  ? "Type a tag and press comma"
-                  : "Maximum of 4 tags allowed"
-              }
-              disabled={tags.length >= 4} // Disable input if max tags are reached
-            />
+            <p className="text-sm text-gray-500 mt-2">
+              Select up to 4 tags to describe the job.
+            </p>
           </div>
           {/* Why This Job Input */}
           <div>

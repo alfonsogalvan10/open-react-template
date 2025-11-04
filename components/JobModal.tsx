@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { FaLinkedin, FaTwitter, FaFacebook } from "react-icons/fa";
 
 interface JobModalProps {
   job: {
@@ -11,14 +12,26 @@ interface JobModalProps {
   onClose: () => void;
 }
 
+// Cache for company information
+const companyInfoCache = new Map<string, any>();
+
 export default function JobModal({ job, isOpen, onClose }: JobModalProps) {
   const [companyInfo, setCompanyInfo] = useState<{
+    logo: string;
+    name: string;
+    size: string;
+    location: string;
     industry: string;
-    headquarters: string;
-    totalEmployees: string;
-    yearFounded: number | string;
+    about: string;
+    founded: string;
     revenue: string;
+    stock: string;
     website: string;
+    socials: {
+      linkedin?: string;
+      twitter?: string;
+      facebook?: string;
+    };
   } | null>(null);
 
   const [loading, setLoading] = useState(true);
@@ -26,6 +39,14 @@ export default function JobModal({ job, isOpen, onClose }: JobModalProps) {
 
   useEffect(() => {
     if (isOpen && job.domain) {
+      const domain = job.domain;
+      // Check if the company info is already cached
+      if (companyInfoCache.has(domain)) {
+        setCompanyInfo(companyInfoCache.get(domain));
+        setLoading(false);
+        return;
+      }
+
       const fetchCompanyInfo = async () => {
         try {
           setLoading(true);
@@ -34,7 +55,7 @@ export default function JobModal({ job, isOpen, onClose }: JobModalProps) {
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({ companyDomain: job.domain }),
+            body: JSON.stringify({ companyDomain: domain }),
           });
 
           if (!response.ok) {
@@ -43,17 +64,38 @@ export default function JobModal({ job, isOpen, onClose }: JobModalProps) {
 
           const data = await response.json();
 
-          // Log the entire response data for debugging
-          console.log("POST response data:", data);
-
-          setCompanyInfo({
+          const fetchedInfo = {
+            logo: data.assets?.logoSquare?.src || "https://via.placeholder.com/200",
+            name: data.about?.name || "Unknown",
+            size: `${data.about?.totalEmployeesExact || "Unknown"} employees`,
+            location: [
+              data.locations?.headquarters?.city?.name,
+              data.locations?.headquarters?.state?.name,
+              data.locations?.headquarters?.country?.name,
+            ]
+              .filter(Boolean)
+              .join(", "),
             industry: data.about?.industry || "Unknown",
-            headquarters: data.locations?.headquarters?.city?.name || "Unknown",
-            totalEmployees: data.about?.totalEmployees || "Unknown",
-            yearFounded: data.about?.yearFounded || "Unknown",
+            about: data.descriptions?.primary
+              ? `${data.descriptions.primary.slice(0, 100)}${
+                  data.descriptions.primary.length > 100 ? "..." : ""
+                }`
+              : "No description available.",
+            founded: data.about?.yearFounded ? `Founded in ${data.about.yearFounded}` : "Unknown",
             revenue: data.finances?.revenue || "Unknown",
-            website: `https://${data.domain?.domain || job.domain}`,
-          });
+            stock: data.finances?.stockSymbol ? `NASDAQ: ${data.finances.stockSymbol}` : "Unknown",
+            website: data.domain?.alias || `https://${domain}`,
+            socials: {
+              linkedin: data.socials?.linkedin?.url,
+              twitter: data.socials?.twitter?.url,
+              facebook: data.socials?.facebook?.url,
+            },
+          };
+
+          // Cache the fetched company info
+          companyInfoCache.set(domain, fetchedInfo);
+
+          setCompanyInfo(fetchedInfo);
         } catch (err) {
           const message = err instanceof Error ? err.message : String(err);
           console.error("Error fetching company information:", message);
@@ -89,53 +131,83 @@ export default function JobModal({ job, isOpen, onClose }: JobModalProps) {
           <>
             <div className="flex items-center gap-4">
               <img
-                alt={`${job.company} logo`}
-                src={
-                  job.domain
-                    ? `https://cdn.brandfetch.io/${job.domain}`
-                    : "https://via.placeholder.com/150"
-                }
-                className="h-16 w-16 rounded-full bg-gray-100"
-              />
+                  alt={`${job.company} logo`}
+                  src={
+                    job.domain
+                      ? `https://cdn.brandfetch.io/${job.domain}`
+                      : "https://via.placeholder.com/150"
+                  }
+                  className="h-12 w-12 rounded-full bg-gray-100"
+                />
               <div>
-                <h3 className="text-gray-900 font-bold text-xl">{job.company}</h3>
-                <p className="text-lg text-gray-500">{companyInfo.industry}</p>
+                <h3 className="text-gray-900 font-bold text-xl">{companyInfo.name}</h3>
+                <p className="text-sm text-gray-500">{companyInfo.industry}</p>
               </div>
             </div>
             <div className="border-t border-gray-200 pt-4">
-              <p className="text-lg text-gray-700">
-                <span className="font-bold">Headquarters:</span> {companyInfo.headquarters}
+              <p className="text-sm text-gray-700">
+                <span className="font-bold">Company Size:</span> {companyInfo.size}
               </p>
-              <p className="text-lg text-gray-700">
-                <span className="font-bold">Employees:</span> {companyInfo.totalEmployees}
+              <p className="text-sm text-gray-700">
+                <span className="font-bold">Location:</span> {companyInfo.location}
               </p>
-              <p className="text-lg text-gray-700">
-                <span className="font-bold">Year Founded:</span> {companyInfo.yearFounded}
+              <p className="text-sm text-gray-700">
+                <span className="font-bold">About:</span> {companyInfo.about}
               </p>
-              <p className="text-lg text-gray-700">
+              <p className="text-sm text-gray-700">
+                <span className="font-bold">Founded:</span> {companyInfo.founded}
+              </p>
+              <p className="text-sm text-gray-700">
                 <span className="font-bold">Revenue:</span> {companyInfo.revenue}
               </p>
-              <p className="text-lg text-gray-700">
+              <p className="text-sm text-gray-700">
+                <span className="font-bold">Stock:</span> {companyInfo.stock}
+              </p>
+              <p className="text-sm text-gray-700">
                 <span className="font-bold">Website:</span>{" "}
                 <a
-                    href={companyInfo.website}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-600 hover:underline"
+                  href={`https://${companyInfo.website}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:underline"
                 >
-                    {companyInfo.website}
+                  {companyInfo.website}
                 </a>
               </p>
+              <div className="flex gap-4 mt-4">
+                {companyInfo.socials.linkedin && (
+                  <a
+                    href={companyInfo.socials.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:text-blue-800 transition-colors"
+                  >
+                    <FaLinkedin size={32} />
+                  </a>
+                )}
+                {companyInfo.socials.twitter && (
+                  <a
+                    href={companyInfo.socials.twitter}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-400 hover:text-blue-600 transition-colors"
+                  >
+                    <FaTwitter size={32} />
+                  </a>
+                )}
+                {companyInfo.socials.facebook && (
+                  <a
+                    href={companyInfo.socials.facebook}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-800 hover:text-blue-900 transition-colors"
+                  >
+                    <FaFacebook size={32} />
+                  </a>
+                )}
+              </div>
             </div>
             <div className="flex justify-end gap-4 mt-6">
-              <a
-                href={companyInfo.website}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn bg-[#273e3d] text-white hover:bg-[#355c58] py-2 px-4 rounded-full cursor-pointer"
-              >
-                Visit Website
-              </a>
               <button
                 className="btn bg-gray-100 text-gray-700 hover:bg-gray-200 py-2 px-4 rounded-full cursor-pointer"
                 onClick={onClose}
