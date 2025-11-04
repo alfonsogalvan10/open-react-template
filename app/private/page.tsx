@@ -45,11 +45,17 @@ export default async function PrivatePage() {
 
   return (
     <section className="bg-stone-200 min-h-[calc(100vh-4rem)] px-4 sm:px-6">
-      <div className="mx-auto max-w-6xl py-12 md:py-20">
-        <h1 className="pb-5 font-nacelle text-4xl font-semibold text-[#273e3d] text-center flex items-center justify-center gap-4">
-          Hey {profile?.full_name || user.user.email}!
-          <Avvvatars value={profile?.full_name || user.user.email} style="shape" size={80} />
+      <div className="mx-auto max-w-6xl py-10 md:py-10">
+        <h1 className="pb-5 font-nacelle text-4xl font-semibold text-[#273e3d] text-center flex items-center justify-left gap-4">
+          Welcome back!
         </h1>
+        <h2 className="pb-5 font-nacelle text-2xl text-[#273e3d] text-center flex items-center justify-left gap-4">
+          Explore the latest opportunities from Europe's most exciting startups and scale-ups
+        </h2>
+        {/* Heading */}
+        <h3 className="text-2xl font-nacelle font-semibold text-[#273e3d] justify-left mb-4">
+          {profile?.full_name}, here are companies that are hiring now:
+        </h3>
         <JobsCarouselWithLogoFilter jobs={jobsWithDomains} />
       </div>
     </section>

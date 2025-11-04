@@ -77,8 +77,8 @@ export default function JobModal({ job, isOpen, onClose }: JobModalProps) {
               .join(", "),
             industry: data.about?.industry || "Unknown",
             about: data.descriptions?.primary
-              ? `${data.descriptions.primary.slice(0, 100)}${
-                  data.descriptions.primary.length > 100 ? "..." : ""
+              ? `${data.descriptions.primary.slice(0, 250)}${
+                  data.descriptions.primary.length > 250 ? "..." : ""
                 }`
               : "No description available.",
             founded: data.about?.yearFounded ? `Founded in ${data.about.yearFounded}` : "Unknown",

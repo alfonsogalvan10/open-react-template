@@ -56,15 +56,15 @@ export default function ProfileDropdown({
             <li>
               <a
                 href="/private"
-                className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 hover:text-[#273e3d] transition-all duration-200"
+                className="block font-nacelle px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 hover:text-[#273e3d] transition-all duration-200"
               >
-                Dashboard
+                View Jobs
               </a>
             </li>
             <li>
               <a
                 href="/submit-job"
-                className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 hover:text-[#273e3d] transition-all duration-200"
+                className="block font-nacelle px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 hover:text-[#273e3d] transition-all duration-200"
               >
                 Share a Job
               </a>
@@ -73,7 +73,7 @@ export default function ProfileDropdown({
               <li>
                 <a
                   href="/admin-portal"
-                  className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 hover:text-[#273e3d] transition-all duration-200"
+                  className="block font-nacelle px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 hover:text-[#273e3d] transition-all duration-200"
                 >
                   Manage Jobs
                 </a>
