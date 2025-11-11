@@ -23,7 +23,7 @@ const numberWithinRange = (number: number, min: number, max: number): number =>
 type PropType = {
   slides: Array<{
     id: string;
-    title: string;
+    role_type: string;
     company: string;
     url: string;
     domain: string | null;

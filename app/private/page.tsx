@@ -1,7 +1,6 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/utils/supabase/server";
 import JobsCarouselWithLogoFilter from "@/components/JobsCarouselWithLogoFilter";
-import Avvvatars from "avvvatars-react";
 
 export default async function PrivatePage() {
   const supabase = await createClient();
@@ -23,7 +22,7 @@ export default async function PrivatePage() {
 
   const { data: jobs, error: jobsError } = await supabase
     .from("jobs")
-    .select("id, title, company, url, tags, why_this_job, contributor_full_name, submitted_at")
+    .select("id, role_type, company, url, tags, why_this_job, contributor_full_name, submitted_at")
     .eq("approved", true)
     .eq("reviewed", true)
     .order("submitted_at", { ascending: false });

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { insertJob } from "./actions";
-import { FaGlobe, FaBuilding, FaBriefcase, FaBolt, FaWrench, FaPalette, FaDatabase, FaSeedling, FaRocket } from "react-icons/fa";
+import { FaGlobe, FaBuilding, FaBriefcase, FaBolt, FaWrench, FaPalette, FaDatabase, FaSeedling, FaRocket, FaUsers, FaClock, FaChartLine, FaHandshake, FaLightbulb } from "react-icons/fa";
 
 export default function SubmitJobForm() {
   const [selectedTags, setSelectedTags] = useState<string[]>([]); // State to manage selected tags
@@ -11,13 +11,16 @@ export default function SubmitJobForm() {
   const tagOptions = [
     { label: "Remote", icon: <FaGlobe /> },
     { label: "Hybrid", icon: <FaBuilding /> },
-    { label: "Full-time", icon: <FaBriefcase /> },
     { label: "Contract", icon: <FaBolt /> },
-    { label: "Backend Engineer", icon: <FaWrench /> },
-    { label: "Product Designer", icon: <FaPalette /> },
-    { label: "Data Engineer", icon: <FaDatabase /> },
+    { label: "Full-time", icon: <FaBriefcase /> },
     { label: "Entry-level", icon: <FaSeedling /> },
+    { label: "Mid-level", icon: <FaWrench /> },
     { label: "Senior", icon: <FaRocket /> },
+    { label: "Great Team", icon: <FaUsers /> },
+    { label: "Flexible", icon: <FaClock /> },
+    { label: "Growth Opportunities", icon: <FaChartLine /> },
+    { label: "Inclusive", icon: <FaHandshake /> },
+    { label: "Innovative", icon: <FaLightbulb /> },
   ];
 
   const toggleTagSelection = (tag: string) => {
@@ -81,22 +84,48 @@ export default function SubmitJobForm() {
               required
             />
           </div>
-          {/* Role Name Input */}
+          {/* Role Type Selection */}
           <div>
             <label
               className="mb-1 block text-sm font-bold text-left text-[#273e3d]"
-              htmlFor="role-name"
+              htmlFor="role-type"
             >
-              Role Name <span className="text-red-500">*</span>
+              Role Type <span className="text-red-500">*</span>
             </label>
-            <input
-              id="role-name"
-              name="role-name"
-              type="text"
-              className="form-input w-full bg-stone-100 text-[#273e3d] placeholder-[#273e3d] rounded-lg border border-stone-300 focus:ring-2 focus:ring-[#355c58] focus:outline-none"
-              placeholder="Enter the role name"
+            <select
+              id="role-type"
+              name="role-type"
+              className="form-select w-full bg-stone-100 text-[#273e3d] placeholder-[#273e3d] rounded-lg border border-stone-300 focus:ring-2 focus:ring-[#355c58] focus:outline-none"
+              defaultValue="" // Use defaultValue to set the initial value
               required
-            />
+            >
+              <option value="" disabled>
+                Select the role type
+              </option>
+              {[
+                "Data Analyst",
+                "Platform Engineer",
+                "Analytics Engineer",
+                "Data Engineer",
+                "Solutions Engineer",
+                "Data Scientist",
+                "ML Engineer",
+                "AI Engineer",
+                "Big Data Engineer",
+                "Data Architect",
+                "BI Developer",
+                "Data Governance Specialist",
+                "Data Strategist",
+                "Data Operations Engineer",
+                "Cloud Data Engineer",
+                "Data Product Manager",
+                "Data Security Analyst",
+              ].map((role) => (
+                <option key={role} value={role}>
+                  {role}
+                </option>
+              ))}
+            </select>
           </div>
           {/* Tags Selection */}
           <div>

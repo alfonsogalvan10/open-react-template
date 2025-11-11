@@ -7,7 +7,7 @@ export async function insertJob(formData: FormData): Promise<void> {
   const supabase = await createClient();
 
   // Extract form data
-  const title = formData.get('role-name') as string;
+  const role_type = formData.get('role-type') as string;
   const company = formData.get('company-name') as string;
   const url = formData.get('url') as string;
   const why_this_job = formData.get('why-this-job') as string;
@@ -25,7 +25,7 @@ export async function insertJob(formData: FormData): Promise<void> {
   // Insert the new job record into the "jobs" table
   const { error } = await supabase
     .from('jobs')
-    .insert([{ title, company, url, why_this_job, tags, contributor_id: user.id }]);
+    .insert([{ role_type, company, url, why_this_job, tags, contributor_id: user.id }]);
 
   if (error) {
     console.error('Error inserting job:', error);

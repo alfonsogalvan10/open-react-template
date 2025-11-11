@@ -5,7 +5,7 @@ import React from "react";
 interface AdminJobModalProps {
   job: {
     id: string;
-    title: string;
+    role_type: string;
     company: string;
     url: string;
     domain: string | null;
@@ -43,7 +43,7 @@ export default function AdminJobModal({ job, isOpen, onClose }: AdminJobModalPro
             className="h-16 w-16 rounded-full bg-gray-100"
           />
           <div>
-            <h3 className="text-gray-900 font-bold text-xl">{job.title}</h3>
+            <h3 className="text-gray-900 font-bold text-xl">{job.role_type}</h3>
             <p className="text-lg text-gray-500">{job.company}</p>
           </div>
         </div>

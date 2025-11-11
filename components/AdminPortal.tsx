@@ -7,7 +7,7 @@ import AdminJobModal from "@/components/AdminJobModal";
 
 interface Job {
   id: string;
-  title: string;
+  role_type: string;
   company: string;
   url: string;
   domain: string | null;
@@ -57,7 +57,7 @@ export default function AdminPortal({ jobs }: { jobs?: Job[] }) {
                   />
                   <div>
                     <h3 className="text-gray-900 font-semibold text-lg">
-                      {job.title}
+                      {job.role_type}
                     </h3>
                     <p className="text-sm text-gray-500">{job.company}</p>
                   </div>

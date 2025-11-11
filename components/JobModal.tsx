@@ -166,7 +166,7 @@ export default function JobModal({ job, isOpen, onClose }: JobModalProps) {
               <p className="text-sm text-gray-700">
                 <span className="font-bold">Website:</span>{" "}
                 <a
-                  href={`https://${companyInfo.website}`}
+                  href={`https://${job.domain}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-600 hover:underline"

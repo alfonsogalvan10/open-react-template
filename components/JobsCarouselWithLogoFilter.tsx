@@ -6,7 +6,7 @@ import JobCard from "@/components/JobCard";
 
 type Job = {
   id: string;
-  title: string;
+  role_type: string;
   company: string;
   url: string;
   domain: string | null;
@@ -91,7 +91,7 @@ export default function JobsCarouselWithLogoFilter({ jobs }: { jobs?: Job[] }) {
           ))}
         </div>
       ) : (
-        <p className="text-center text-gray-500 mt-8">No jobs available for the selected company.</p>
+        <p className="text-center text-gray-500 mt-8">No jobs available at this time.</p>
       )}
     </div>
   );
