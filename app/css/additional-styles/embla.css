@@ -20,7 +20,7 @@
   transform: translate3d(0, 0, 0);
   flex: 0 0 var(--slide-size);
   min-width: 0;
-  max-width: 450px;
+  max-width: 500px;
   padding-left: var(--slide-spacing);
 }
 
@@ -35,7 +35,7 @@
   transform: translate3d(0, 0, 0);
   flex: 0 0 var(--slide-size); /* Ensure slides have a fixed size */
   min-width: 0;
-  max-width: 450px;
+  max-width: 500px;
   padding-left: var(--slide-spacing);
   scroll-snap-align: start; /* Ensure slides snap to the start */
 }
