@@ -2,10 +2,26 @@
 
 import { useState } from "react";
 import { insertJob } from "./actions";
-import { FaGlobe, FaBuilding, FaBriefcase, FaBolt, FaWrench, FaPalette, FaDatabase, FaSeedling, FaRocket, FaUsers, FaClock, FaChartLine, FaHandshake, FaLightbulb } from "react-icons/fa";
+import {
+  FaGlobe,
+  FaBuilding,
+  FaBriefcase,
+  FaBolt,
+  FaWrench,
+  FaPalette,
+  FaDatabase,
+  FaSeedling,
+  FaRocket,
+  FaUsers,
+  FaClock,
+  FaChartLine,
+  FaHandshake,
+  FaLightbulb,
+} from "react-icons/fa";
 
 export default function SubmitJobForm() {
   const [selectedTags, setSelectedTags] = useState<string[]>([]); // State to manage selected tags
+  const [whyThisJob, setWhyThisJob] = useState(""); // State to track textarea input
 
   // Hardcoded tag options with icons
   const tagOptions = [
@@ -169,8 +185,14 @@ export default function SubmitJobForm() {
               className="form-input w-full bg-stone-100 text-[#273e3d] placeholder-[#273e3d] rounded-lg border border-stone-300 focus:ring-2 focus:ring-[#355c58] focus:outline-none"
               placeholder="Explain why you recommend this job"
               rows={3}
+              maxLength={150} // Limit input to 150 characters
+              value={whyThisJob}
+              onChange={(e) => setWhyThisJob(e.target.value)}
               required
             ></textarea>
+            <p className="text-sm text-gray-500 mt-2">
+              {whyThisJob.length}/150 characters
+            </p>
           </div>
           {/* Submit Button */}
           <div className="mt-6">
