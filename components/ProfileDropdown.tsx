@@ -55,7 +55,7 @@ export default function ProfileDropdown({
           <ul className="py-2">
             <li>
               <a
-                href="/private"
+                href="/explore"
                 className="block font-nacelle px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 hover:text-[#273e3d] transition-all duration-200"
               >
                 View Jobs

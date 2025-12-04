@@ -6,7 +6,7 @@ export default function HeroButtons() {
   const router = useRouter();
 
   const handleTryNowClick = () => {
-    router.push("/private"); // Redirect to the /private route
+    router.push("/explore"); // Redirect to the /private route
   };
 
   const handleApproveJobsClick = () => {

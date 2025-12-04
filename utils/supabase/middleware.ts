@@ -47,10 +47,10 @@ export async function updateSession(request: NextRequest) {
     const url = request.nextUrl.clone()
     url.pathname = '/signin'
     return NextResponse.redirect(url)
-  } else if (request.nextUrl.pathname !== '/private') {
-    // user is logged in and not already on /private
+  } else if (request.nextUrl.pathname !== '/explore') {
+    // user is logged in and not already on /explore
     const url = request.nextUrl.clone()
-    url.pathname = '/private'
+    url.pathname = '/explore'
     return NextResponse.redirect(url)
   }
 

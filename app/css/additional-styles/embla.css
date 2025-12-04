@@ -27,7 +27,7 @@
 .embla__container_filtered {
   display: flex; /* Align slides in a row */
   gap: 1rem; /* Add spacing between slides */
-  overflow-x: auto; /* Allow horizontal scrolling if needed */
+  overflow: visible; /* Ensure modal backdrop is not constrained */
   scroll-snap-type: x mandatory; /* Enable snapping for a smooth scroll experience */
 }
 

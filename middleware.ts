@@ -3,7 +3,7 @@ import { updateSession } from '@/utils/supabase/middleware'
 
 export async function middleware(request: NextRequest) {
   // Only protect routes that start with /dashboard, /profile, etc.
-  if (request.nextUrl.pathname.startsWith('/private')) {
+  if (request.nextUrl.pathname.startsWith('/explore')) {
     return await updateSession(request)
   }
   

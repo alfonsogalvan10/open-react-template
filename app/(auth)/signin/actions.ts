@@ -19,6 +19,6 @@ export async function login(formData: FormData) {
     return { error: 'Incorrect password or email' }
   }
 
-  revalidatePath('/private', 'layout')
+  revalidatePath('/explore', 'layout')
   return { success: true }
 }

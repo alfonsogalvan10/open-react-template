@@ -61,7 +61,7 @@ export default function SubmitJobForm() {
 
   return (
     <section className="bg-stone-200 min-h-screen flex items-center justify-center py-12">
-      <div className="bg-white border border-stone-300 rounded-2xl shadow-lg p-8 max-w-md w-full">
+      <div className="bg-white border border-stone-300 rounded-2xl shadow-lg p-8 max-w-xl w-full">
         <h2 className="pb-5 text-2xl font-semibold text-[#273e3d] text-center">
           Submit a Job
         </h2>

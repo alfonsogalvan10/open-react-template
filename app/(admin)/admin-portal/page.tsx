@@ -19,7 +19,7 @@ export default async function PrivatePage() {
     .single();
 
   if (metadataError || !userMetadata?.admin) {
-    redirect('/private');
+    redirect('/explore');
   }
 
   // Fetch jobs

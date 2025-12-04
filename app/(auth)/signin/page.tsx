@@ -16,7 +16,7 @@ export default function SignIn() {
       setError(result.error);
     } else {
       // Redirect to /private on success
-      window.location.href = "/private";
+      window.location.href = "/explore";
     }
   };
 
